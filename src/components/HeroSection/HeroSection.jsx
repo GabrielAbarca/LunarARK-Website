@@ -1,17 +1,18 @@
-import './HeroSection.css';
-import ShinyText from '../../TextAnimations/ShinyText/ShinyText.jsx';
-import CartIcon from '../Icons/CartIcon.jsx';
-import GlobeIcon from '../Icons/GlobeIcon.jsx';
-import { useEffect, useState } from 'react';
+import "./HeroSection.css";
+import ShinyText from "../../TextAnimations/ShinyText/ShinyText.jsx";
+import CartIcon from "../Icons/CartIcon.jsx";
+import GlobeIcon from "../Icons/GlobeIcon.jsx";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => setIsLoaded(true), []);
 
   return (
-    <main className='hero-section-main'>
+    <main className="hero-section-main">
       <div className="hero-section">
-        <h1 className={`hero-section__title ${isLoaded ? 'loaded' : ''}`}>
+        <h1 className={`hero-section__title ${isLoaded ? "loaded" : ""}`}>
           Become The Ultimate Survivor
         </h1>
         <div className="hero-section_shiny-container">
@@ -23,14 +24,14 @@ export default function HeroSection() {
           />
         </div>
         <section className="cta-section">
-          <a className="browse-btn">
+          <Link to="/servers" className="browse-btn">
             <GlobeIcon className="globe-icon" />
             <p>Browse Servers</p>
-          </a>
-          <a className="browse-btn">
+          </Link>
+          <Link to='/shop' className="browse-btn">
             <CartIcon className="cart-icon" />
             <p>Visit Shop</p>
-          </a>
+          </Link>
         </section>
       </div>
     </main>

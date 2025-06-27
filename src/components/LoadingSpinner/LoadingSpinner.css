@@ -1,0 +1,6 @@
+.loading-spinner_container {
+  padding-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
