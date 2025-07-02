@@ -28,7 +28,7 @@ export default function HeroSection() {
             <GlobeIcon className="globe-icon" />
             <p>Browse Servers</p>
           </Link>
-          <Link to='/shop' className="browse-btn">
+          <Link to="/shop" className="browse-btn">
             <CartIcon className="cart-icon" />
             <p>Visit Shop</p>
           </Link>
