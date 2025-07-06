@@ -1,9 +1,10 @@
 .parallax-slider-wrapper {
   position: relative;
-  height: 100dvh;
+  height: 100vh;
   margin-top: 80px;
   width: 100%;
   overflow: hidden;
+  margin-top: 50px;
 }
 
 .swiper {
@@ -30,9 +31,8 @@
 
 .parallax-bg {
   position: absolute;
-  left: 0;
   top: 0;
-  width: 100%;
+  width: 101%;
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -79,7 +79,6 @@
 }
 .title {
   font-size: 3.5rem;
-
 }
 .purple-theme .bundle-info,
 .purple-theme .bundle-price,
@@ -149,6 +148,8 @@
   color: #00fe8c;
   text-align: center;
   transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
 }
 .swiper-slide .buy-button:hover {
   background-color: #00fe8c;
@@ -230,8 +231,11 @@
 
 /* MEDIA QUERIES */
 @media (min-width: 768px) {
+  .parallax-bg {
+    left: 0;
+  }
   .parallax-slider-wrapper {
-    min-width: 1462px;
+    min-width: 100%;
   }
   .swiper-slide {
     padding: 40px 40px;
@@ -255,10 +259,39 @@
 }
 
 @media (min-width: 1024px) {
+  .parallax-bg {
+    left: 0;
+  }
   .swiper-slide .title {
-    font-size: 6rem;
+    font-size: 4rem;
   }
   .bundle-info {
     margin-left: 10%;
+  }
+}
+@media (min-width: 2560px) {
+  .parallax-bg {
+    left: 0;
+  }
+  .bundle-info {
+    margin-left: 15%;
+  }
+  .bundle-price {
+    font-size: 3rem;
+  }
+  .swiper-slide .buy-button {
+    padding: 1rem 2rem;
+    font-size: 2rem;
+  }
+  .swiper-slide .title {
+    font-size: 9rem;
+  }
+  .swiper-slide .title-h1 {
+    font-size: 9rem;
+    padding-bottom: 150px;
+  }
+  .bundle-info {
+    margin-left: 15%;
+    font-size: 2rem;
   }
 }

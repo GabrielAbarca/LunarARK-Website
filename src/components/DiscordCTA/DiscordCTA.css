@@ -5,6 +5,8 @@ section.discord-cta-section {
   justify-content: center;
   padding: 10rem 20px;
   background-color: var(--background-color-1);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
 }
 
 h2.discord-cta_title {
@@ -22,7 +24,7 @@ h2.discord-cta_title {
 }
 
 section a.discord-button {
-  width: 10rem;
+  width: 8rem;
   display: flex;
   font-size: var(--font-size-5);
   border: solid 1px var(--font-color-2);
@@ -39,8 +41,9 @@ section a.discord-button {
 }
 
 section a.discord-button:hover {
-  background-color: var(--font-color-2);
-  color: var(--font-color-3);
+  background-color: #01c46c;
+  color: white;
+  border-color: #01c46c;
 }
 
 a.discord-button .discord-icon {
@@ -57,20 +60,17 @@ a.discord-button:hover .discord-icon {
 /* DESKTOP STYLES */
 @media (min-width: 768px) {
   h2.discord-cta_title {
-    font-size: 48px;
+    font-size: 3.5rem;
     margin-bottom: 20px;
   }
-
   .discord-cta__subtitle {
-    font-size: var(--font-size-4);
+    font-size: 1rem;
   }
-
   section a.discord-button {
-    font-size: var(--font-size-4);
-    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    padding: .6rem 1.5rem;
     width: auto;
   }
-
   a.discord-button .discord-icon {
     width: 20px;
   }

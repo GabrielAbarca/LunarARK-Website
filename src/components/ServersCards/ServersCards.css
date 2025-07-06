@@ -1,10 +1,11 @@
 .server-card_container {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
   padding: 16px;
 }
+
 .server-card {
   display: flex;
   flex-direction: column;
@@ -13,7 +14,9 @@
   border-radius: 8px;
   padding: 12px;
   gap: 10px;
+  max-width: 850px;
 }
+
 .card-header {
   width: 100%;
   display: flex;
@@ -21,35 +24,44 @@
   align-items: center;
   gap: 8px;
 }
+
 .card-header .server-title {
   font-size: 16px;
 }
+
 .card-header .status-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 }
+
 .status-container .status-text {
   font-size: 14px;
+  padding-bottom: 2px;
 }
+
 .status-container .status-circle {
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
+
 .status-circle.online {
   background-color: #0bbb0b;
 }
+
 .status-circle.offline {
   background-color: #cc1919;
 }
+
 .card-info_container {
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
+
 .card-info {
   width: 100%;
   display: flex;
@@ -58,13 +70,15 @@
   flex-direction: column;
   gap: 15px;
 }
+
 .card-last-wipe_container {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: flex-start;
-  margin-bottom: 8px;
+  padding-bottom: 5px;
 }
+
 .card-player-count_container {
   width: 100%;
   flex-direction: row;
@@ -74,35 +88,158 @@
   gap: 5px;
   margin-bottom: 10px;
 }
+
 .users-icon {
   width: 16px;
   color: var(--text-color);
 }
+
 .users-icon.empty {
   color: #d3d3d3;
   opacity: 0.5;
 }
+
 .player-count {
   font-size: 12px;
   color: var(--text-color);
 }
+
 .player-count.empty {
   opacity: 0.5;
 }
+
 .card-last-wipe {
   font-size: 10px;
 }
+
 .map-info {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
+
 .card-map {
   font-size: 15px;
   color: var(--text-color);
 }
+
+.card-ip-container {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  position: relative;
+}
+
 .card-ip {
   font-size: 15px;
   color: var(--text-color);
+  border: solid 1px #fff;
+  border-radius: 8px;
+  width: 280px;
+  min-width: 180px;
+  height: 2.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.card-ip:hover {
+  background-color: #01c46c;
+  color: #000;
+  border: none;
+}
+
+.clipboard-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  color: #ffffff;
+}
+/* --- Texto de "Copied!" --- */
+.copied-text {
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* --- Botón de PLAY --- */
+.play-button {
+  background-color: #01c46c;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.play-button:hover {
+  background-color: #03da7b;
+}
+
+.play-button svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
+
+/* --- MEDIA QUERY PARA DESKTOP --- */
+@media screen and (min-width: 1024px) {
+  .server-card {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .card-header .server-title {
+    font-size: 20px;
+  }
+
+  .status-container .status-text {
+    font-size: 16px;
+  }
+
+  .status-container .status-circle {
+    width: 12px;
+    height: 12px;
+  }
+
+  .card-last-wipe {
+    font-size: 13px;
+  }
+
+  .player-count {
+    font-size: 14px;
+  }
+
+  .card-map,
+  .card-ip {
+    font-size: 17px;
+  }
+
+  .users-icon {
+    width: 20px;
+  }
+
+  .card-info {
+    gap: 20px;
+  }
+
+  .clipboard-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .play-button svg {
+    width: 22px;
+    height: 22px;
+  }
 }

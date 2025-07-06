@@ -1,19 +1,21 @@
-import './Features.css';
-import SpotlightCard from '../../SpotlightCard/SpotlightCard.jsx';
-import SparklesIcon from '../Icons/SparklesIcon.jsx';
-import MapIcon from '../Icons/MapIcon.jsx';
-import ConfigIcon from '../Icons/ConfigIcon.jsx';
-import LockIcon from '../Icons/LockIcon.jsx';
-import TrophyIcon from '../Icons/Trophy.jsx';
-import RocketIcon from '../Icons/RocketIcon.jsx';
-import ParticlesBackground from '../ParticlesBackground/ParticlesBackground.jsx'
+import "./Features.css";
+import SpotlightCard from "../../SpotlightCard/SpotlightCard.jsx";
+import SparklesIcon from "../Icons/SparklesIcon.jsx";
+import MapIcon from "../Icons/MapIcon.jsx";
+import ConfigIcon from "../Icons/ConfigIcon.jsx";
+import LockIcon from "../Icons/LockIcon.jsx";
+import TrophyIcon from "../Icons/Trophy.jsx";
+import RocketIcon from "../Icons/RocketIcon.jsx";
+import ParticlesBackground from "../ParticlesBackground/ParticlesBackground.jsx";
 
 export default function Features() {
   return (
     <>
-      <ParticlesBackground/>
+      <ParticlesBackground />
       <section className="features-section">
-        <h2 className="features-title">Our Features</h2>
+        <h2 className="features-title" id="features-link">
+          Our Features
+        </h2>
         <div className="card-container">
           <SpotlightCard
             className="spotlight-card"
@@ -22,8 +24,8 @@ export default function Features() {
             <SparklesIcon className="sparkles-icon card-icon" />
             <p>Active Events</p>
             <span>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel,
-              repudiandae magni nihil accusantium,{" "}
+              We run weekly events that keep the server fresh, fun, and full of
+              surprises.
             </span>
           </SpotlightCard>
 
@@ -34,8 +36,8 @@ export default function Features() {
             <MapIcon className="map-icon card-icon" />
             <p>Custom Caves</p>
             <span>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel,
-              repudiandae magni nihil accusantium,{" "}
+              Explore reworked cave layouts made for better PvP and smoother
+              exploration.
             </span>
           </SpotlightCard>
 
@@ -46,8 +48,8 @@ export default function Features() {
             <ConfigIcon className="config-icon card-icon" />
             <p>Perfectly Balanced</p>
             <span>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel,
-              repudiandae magni nihil accusantium,{" "}
+              Every setting is tuned for fair gameplay, competitive fights, and
+              fun progression.
             </span>
           </SpotlightCard>
           <SpotlightCard
@@ -57,8 +59,8 @@ export default function Features() {
             <LockIcon className="lock-icon card-icon" />
             <p>Anti-Cheat System</p>
             <span>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel,
-              repudiandae magni nihil accusantium,{" "}
+              Strong anti-cheat tools keep the server clean and the experience
+              fair for everyone.
             </span>
           </SpotlightCard>
           <SpotlightCard
@@ -66,10 +68,10 @@ export default function Features() {
             spotlightColor="rgba(0, 247, 253, 0.2)"
           >
             <TrophyIcon className="trophy-icon card-icon" />
-            <p>Leadboard & Rewards</p>
+            <p>Leaderboard & Rewards</p>
             <span>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel,
-              repudiandae magni nihil accusantium,{" "}
+              Climb the ranks and earn rewards for top performance in PvP and
+              server events.
             </span>
           </SpotlightCard>
           <SpotlightCard
@@ -79,8 +81,8 @@ export default function Features() {
             <RocketIcon className="rocket-icon card-icon" />
             <p>High Performance</p>
             <span>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel,
-              repudiandae magni nihil accusantium,{" "}
+              Fast, optimized servers with low ping and no lag—built for the
+              best experience.
             </span>
           </SpotlightCard>
         </div>

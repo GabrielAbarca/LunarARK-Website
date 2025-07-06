@@ -24,12 +24,12 @@ export default function HeroSection() {
           />
         </div>
         <section className="cta-section">
-          <Link to="/servers" className="browse-btn">
-            <GlobeIcon className="globe-icon" />
+          <Link to="/servers" className="hero-btn">
+            <GlobeIcon className="hero-icon" />
             <p>Browse Servers</p>
           </Link>
-          <Link to="/shop" className="browse-btn">
-            <CartIcon className="cart-icon" />
+          <Link to="/shop" className="hero-btn">
+            <CartIcon className="cart-icon hero-icon" />
             <p>Visit Shop</p>
           </Link>
         </section>

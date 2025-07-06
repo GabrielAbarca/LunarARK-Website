@@ -3,12 +3,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Parallax, Pagination, Navigation } from "swiper/modules";
-import lunarBg from "../../assets/lunar-bg.png";
+import lunarBg from "../../assets/lunar-bg-2.png";
 import LunarFerox from "../../assets/LunarFerox.png";
 import "./ParallaxSlider.css";
 
 export default function ParallaxSlider() {
-  const isMobile = window.innerWidth <= 600;
+  const isMobile = window.innerWidth <= 1025;
   const backgroundToUse = isMobile ? LunarFerox : lunarBg;
 
   return (
@@ -52,7 +52,7 @@ export default function ParallaxSlider() {
           </div>
           <p className="bundle-price">$5</p>
 
-          <button className="buy-button">Buy Now</button>
+          <a href="#" className="buy-button">Buy Now</a>
         </SwiperSlide>
         <SwiperSlide className="blue-theme">
           <div className="title" data-swiper-parallax-y="-300">

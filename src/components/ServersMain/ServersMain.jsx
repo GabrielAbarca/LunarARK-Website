@@ -12,7 +12,6 @@ export default function ServersMain() {
           <h1 className={`servers-page_title ${isLoaded ? 'loaded' : ''}`}>
             Lunar ARK Servers
           </h1>
-          <p></p>
         </div>
       </main>
     </>

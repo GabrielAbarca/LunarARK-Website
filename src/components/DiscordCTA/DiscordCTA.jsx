@@ -1,7 +1,7 @@
-import './DiscordCTA.css';
-import ShinyText from '../../TextAnimations/ShinyText/ShinyText';
-import DiscordIcon from '../Icons/DiscordIcon';
-import ParticlesBackground from '../ParticlesBackground/ParticlesBackground.jsx'
+import "./DiscordCTA.css";
+import ShinyText from "../../TextAnimations/ShinyText/ShinyText";
+import DiscordIcon from "../Icons/DiscordIcon";
+import ParticlesBackground from "../ParticlesBackground/ParticlesBackground.jsx";
 
 export default function DiscordCTA() {
   return (
@@ -18,7 +18,9 @@ export default function DiscordCTA() {
           />
         </div>
         <a
-          href="https://discord.gg/your-invite-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://discordapp.com/channels/1180286860476555265/1180288468488814743"
           className="discord-button"
         >
           <DiscordIcon className="discord-icon" />

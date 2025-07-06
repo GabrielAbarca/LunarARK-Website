@@ -13,12 +13,13 @@
   --font-weight-1: 700;
   --font-weight-2: 500;
 
-  --font-size-1: 18px;
-  --font-size-2: 16px;
-  --font-size-3: 14px;
-  --font-size-4: 12px;
-  --font-size-5: 10px;
-  --font-size-6: 8px;
+  --font-size-1: 1.125rem; /* 18px */
+  --font-size-2: 1rem;     /* 16px */
+  --font-size-3: 0.875rem; /* 14px */
+  --font-size-4: 0.75rem;  /* 12px */
+  --font-size-5: 0.625rem; /* 10px */
+  --font-size-6: 0.5rem;   /* 8px */
+
   --font-family-1: 'Montserrat', sans-serif;
   --font-family-2: 'Gemunu Libre', sans-serif;
   --font-family-3: 'Gugi', sans-serif;
@@ -31,10 +32,17 @@
   scrollbar-width: none;
   font-family: var(--font-family-1);
 }
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: #121212;
   color: var(--font-color-3);
+  
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+  }
 }
