@@ -56,12 +56,12 @@
 }
 
 .navbar button:hover {
-  color: var(--font-color-1);
+  color: var(--light-blue);
   text-shadow: #00f7fd 0px 0px 10px;
 }
 
 .navbar button.active-button {
-  color: var(--font-color-1);
+  color: var(--light-blue);
   text-shadow: #00f7fd 0px 0px 10px;
 }
 
@@ -79,7 +79,7 @@
 
 .navbar button.active-button::after {
   width: 100%;
-  background-color: var(--font-color-1);
+  background-color: var(--light-blue);
   text-shadow: #00f7fd 0px 0px 10px;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .dropdown a:hover {
-  color: var(--font-color-1);
+  color: var(--light-blue);
   text-shadow: #00f7fd 0px 0px 10px;
   background-color: #252525;
 }

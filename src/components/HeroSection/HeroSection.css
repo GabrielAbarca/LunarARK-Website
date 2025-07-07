@@ -15,7 +15,7 @@
   font-size: 26px;
   text-align: center;
   font-size: 37px;
-  color: var(--font-color-2);
+  color: var(--light-green);
   margin-bottom: 25px;
   font-weight: var(--font-weight-1);
   opacity: 0;
@@ -29,7 +29,7 @@
   bottom: -8px;
   transform: translateX(-50%);
   height: 1px;
-  background-color: var(--font-color-2);
+  background-color: var(--light-green);
   width: 0;
   transition: width 2.5s ease;
 }
@@ -60,7 +60,7 @@
 
 .hero-icon {
   width: 14px;
-  color: var(--font-color-2);
+  color: var(--light-green);
   transition: all 300ms ease;
 }
 
@@ -69,9 +69,9 @@
   display: flex;
   padding: 0.5rem 0.1rem;
   font-size: var(--font-size-6);
-  border: solid 1px var(--font-color-2);
+  border: solid 1px var(--light-green);
   background-color: transparent;
-  color: var(--font-color-2);
+  color: var(--light-green);
   border-radius: 5px;
   justify-content: center;
   align-items: center;
