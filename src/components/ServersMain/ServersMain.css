@@ -15,7 +15,7 @@
     position: relative;
   font-size: 2.5rem;
   text-align: center;
-  color: var(--light-green);
+  color: var(--light-blue);
   margin-bottom: 30px;
   font-weight: var(--font-weight-1);
   opacity: 0;
@@ -29,7 +29,7 @@
   bottom: -8px;
   transform: translateX(-50%);
   height: 1px;
-  background-color: var(--light-green);
+  background-color: var(--light-blue);
   width: 0;
   transition: width 2.5s ease;
 }

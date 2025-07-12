@@ -15,7 +15,7 @@
   font-size: 26px;
   text-align: center;
   font-size: 37px;
-  color: var(--light-green);
+  color: var(--light-blue);
   margin-bottom: 25px;
   font-weight: var(--font-weight-1);
   opacity: 0;
@@ -29,7 +29,7 @@
   bottom: -8px;
   transform: translateX(-50%);
   height: 1px;
-  background-color: var(--light-green);
+  background-color: var(--light-blue);
   width: 0;
   transition: width 2.5s ease;
 }
@@ -60,7 +60,7 @@
 
 .hero-icon {
   width: 14px;
-  color: var(--light-green);
+  color: var(--light-blue);
   transition: all 300ms ease;
 }
 
@@ -69,9 +69,9 @@
   display: flex;
   padding: 0.5rem 0.1rem;
   font-size: var(--font-size-6);
-  border: solid 1px var(--light-green);
+  border: solid 1px var(--light-blue);
   background-color: transparent;
-  color: var(--light-green);
+  color: var(--light-blue);
   border-radius: 5px;
   justify-content: center;
   align-items: center;
@@ -81,15 +81,10 @@
   cursor: pointer;
   opacity: 0;
   animation: fadeUp 1s ease forwards;
-  transition: all 300ms ease;
+  transition: box-shadow 300ms ease;
 }
 .hero-btn:hover {
-  background-color: #01c46c;
-  color: white;
-  border-color: #01c46c;
-}
-.hero-btn:hover .hero-icon {
-  color: white;
+  box-shadow: var(--button-hover);
 }
 @media (min-width: 768px) {
   .hero-section {

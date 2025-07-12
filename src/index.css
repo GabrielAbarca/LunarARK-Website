@@ -1,12 +1,13 @@
-@import '@fontsource/montserrat';
-@import '@fontsource/gugi';
-@import '@fontsource/gemunu-libre';
+@import "@fontsource/montserrat";
+@import "@fontsource/gugi";
+@import "@fontsource/gemunu-libre";
 
 :root {
-  --navbar-bg-color: #1a1a1a;
+  --navbar-bg-color: #1a1a1a06;
 
-  --light-blue: #00f7fd;
+  --light-blue: #00ffd5;
   --light-green: #00fe8c;
+  --button-hover: 0 0 6px #00ffd5;
   --font-color-3: #ffffff;
   --font-color-4: #000000;
 
@@ -14,15 +15,15 @@
   --font-weight-2: 500;
 
   --font-size-1: 1.125rem; /* 18px */
-  --font-size-2: 1rem;     /* 16px */
+  --font-size-2: 1rem; /* 16px */
   --font-size-3: 0.875rem; /* 14px */
-  --font-size-4: 0.75rem;  /* 12px */
+  --font-size-4: 0.75rem; /* 12px */
   --font-size-5: 0.625rem; /* 10px */
-  --font-size-6: 0.5rem;   /* 8px */
+  --font-size-6: 0.5rem; /* 8px */
 
-  --font-family-1: 'Montserrat', sans-serif;
-  --font-family-2: 'Gemunu Libre', sans-serif;
-  --font-family-3: 'Gugi', sans-serif;
+  --font-family-1: "Montserrat", sans-serif;
+  --font-family-2: "Gemunu Libre", sans-serif;
+  --font-family-3: "Gugi", sans-serif;
 }
 
 * {
@@ -39,7 +40,6 @@ body {
   box-sizing: border-box;
   background-color: #121212;
   color: var(--font-color-3);
-  
 }
 @keyframes fadeUp {
   to {

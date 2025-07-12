@@ -11,7 +11,6 @@ export default function ServersCards({
   status,
   playerCount,
   maxPlayers,
-  lastWipe,
 }) {
   const [copied, setCopied] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -30,7 +29,6 @@ export default function ServersCards({
     status: status,
     playerCount: playerCount,
     maxPlayers: maxPlayers,
-    lastWipe: lastWipe,
   };
 
   const isPlayerCountEmpty = clusterInfo.playerCount === 0;
@@ -60,11 +58,6 @@ export default function ServersCards({
                 className={`player-count ${isPlayerCountEmpty ? "empty" : ""}`}
               >
                 {clusterInfo.playerCount}/{clusterInfo.maxPlayers}
-              </span>
-            </div>
-            <div className="card-last-wipe_container">
-              <span className="card-last-wipe">
-                Last wiped: {clusterInfo.lastWipe}
               </span>
             </div>
           </div>

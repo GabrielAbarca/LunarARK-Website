@@ -6,6 +6,7 @@ import { Parallax, Pagination, Navigation } from "swiper/modules";
 import lunarBg from "../../assets/lunar-bg-2.png";
 import LunarFerox from "../../assets/LunarFerox.png";
 import "./ParallaxSlider.css";
+import BuildingShop from "../Icons/BuildingShop";
 
 export default function ParallaxSlider() {
   const isMobile = window.innerWidth <= 1025;
@@ -37,6 +38,15 @@ export default function ParallaxSlider() {
           <div className={"title title-h1"} data-swiper-parallax-y="-300">
             <h1>Lunar Shop</h1>
           </div>
+          <a
+            href="https://lunarark-50x-ase.tebex.io/category/ranks"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="buy-button"
+          >
+            <BuildingShop className="building-shop-icon" />
+           <p>Visit Shop</p>
+          </a>
         </SwiperSlide>
         <SwiperSlide className="purple-theme">
           <div className="title" data-swiper-parallax-y="-300">
@@ -45,76 +55,74 @@ export default function ParallaxSlider() {
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
               <li>Lunar Whitelist</li>
-              <li>2x Points each 15 Min</li>
-              <li>+50% Turret Fill Range</li>
-              <li>x3 PvP Kit (Balanced Damage)</li>
+              <li>+10000 Instant Points</li>
+              <li>600 Points per hour</li>
+              <li>Stardust Discord Role</li>
+              <li>Stardust Ingame Tag</li>
+              <li>Lifetime Supporter Role</li>
+              <li>Bundle lasts 28 days</li>
             </ul>
           </div>
-          <p className="bundle-price">$5</p>
-
-          <a href="#" className="buy-button">Buy Now</a>
         </SwiperSlide>
         <SwiperSlide className="blue-theme">
           <div className="title" data-swiper-parallax-y="-300">
-            Blue Moon
+            Nebula
           </div>
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
               <li>Lunar Whitelist</li>
-              <li>3x Points each 15 Min</li>
-              <li>+100% Turret Fill Range</li>
-              <li>+5% Discount Ingame Shop</li>
-              <li>+2000 Ingame Points</li>
-              <li>Nebula Rebuild kits</li>
-              <li>1 Weapon +350 Damage</li>
+              <li>+25000 Instant Points</li>
+              <li>800 Points per hour</li>
+              <li>VIP Starter Kit</li>
+              <li>Rank Farm Kit</li>
+              <li>Nebula Discord Role</li>
+              <li>Nebula Ingame Tag</li>
+              <li>Lifetime Supporter Role</li>
+              <li>Bundle lasts 28 days</li>
             </ul>
           </div>
-          <p className="bundle-price">$10</p>
-
-          <button className="buy-button">Buy Now</button>
         </SwiperSlide>
         <SwiperSlide className="dark-purple-theme">
           <div className="title" data-swiper-parallax-y="-300">
-            Dark Void
+            Comet
           </div>
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
               <li>Lunar Whitelist</li>
-              <li>4x Points each 15 Min</li>
-              <li>+150% Turret Fill Range</li>
-              <li>+10% Discount Ingame Shop</li>
-              <li>+6000 Ingame Points</li>
-              <li>Blue Moon Rebuild kits</li>
-              <li>5.000 Element (24h)</li>
-              <li>1 Cap Flak Kit</li>
+              <li>+40000 Instant Points</li>
+              <li>1000 Points per hour</li>
+              <li>VIP Starter Kit</li>
+              <li>Rank Farm Kit</li>
+              <li>Comet Discord Role</li>
+              <li>Comet Ingame Tag</li>
+              <li>Lifetime Supporter Role</li>
+              <li>Bundle lasts 28 days</li>
             </ul>
           </div>
-          <p className="bundle-price">$15</p>
-
-          <button className="buy-button">Buy Now</button>
         </SwiperSlide>
         <SwiperSlide className="reddish-theme">
           <div className="title" data-swiper-parallax-y="-300">
-            Red Giant
+            Cosmos
           </div>
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
               <li>Lunar Whitelist</li>
-              <li>5x Points each 15 Min</li>
-              <li>+150% Turret Fill Range</li>
-              <li>+15% Discount Ingame Shop</li>
-              <li>+10000 Ingame Points</li>
-              <li>Infinite Dino Paints</li>
-              <li>Red Giant Rebuild kits</li>
-              <li>15.000 Element (24h)</li>
-              <li>500 Mutagen (24h)</li>
-              <li>1 BP +350% Damage</li>
-              <li>Stryder (24h)</li>
+              <li>+60000 Instant Points</li>
+              <li>1200 Points per hour</li>
+              <li>VIP Starter Kit</li>
+              <li>MVP Starter Kit</li>
+              <li>3x Cosmos Maewing Kit [LvL 150 Maewing]</li>
+              <li>Rank Taming Kit</li>
+              <li>QOL Kit</li>
+              <li>Rank Farm Kit</li>
+              <li>Better Rank Farm Kit</li>
+              <li>Cosmos Utilities Kit [Element + Mutagen]</li>
+              <li>Cosmos Discord Role</li>
+              <li>Cosmos Ingame Tag</li>
+              <li>Lifetime Supporter Role</li>
+              <li>Bundle lasts 28 days</li>
             </ul>
           </div>
-          <p className="bundle-price">$25</p>
-
-          <button className="buy-button">Buy Now</button>
         </SwiperSlide>
         <SwiperSlide className="yellowish-theme">
           <div className="title" data-swiper-parallax-y="-300">
@@ -123,22 +131,46 @@ export default function ParallaxSlider() {
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
               <li>Lunar Whitelist</li>
-              <li>6x Points each 15 Min</li>
-              <li>+400% Turret Fill Range</li>
-              <li>+20% Discount Ingame Shop</li>
-              <li>+15000 Ingame Points</li>
-              <li>Infinite Dino Paints</li>
-              <li>Supernova Rebuild kits</li>
-              <li>20.000 Element (24h)</li>
-              <li>1000 Mutagen (24h)</li>
-              <li>5 Cap BP</li>
-              <li>Stryder (24h)</li>
-              <li>Tek Forge (24h)</li>
+              <li>+120000 Instant Points</li>
+              <li>1300 Points per hour</li>
+              <li>VIP Starter Kit</li>
+              <li>MVP Starter Kit</li>
+              <li>3x Supernova Maewing Kit [LvL 180 Maewing]</li>
+              <li>Rank Taming Kit</li>
+              <li>QOL Kit</li>
+              <li>Rank Farm Kit</li>
+              <li>Better Rank Farm Kit</li>
+              <li>Supernova Utilities Kit [Element + Mutagen]</li>
+              <li>Supernova Discord Role</li>
+              <li>Supernova Ingame Tag</li>
+              <li>Lifetime Supporter Role</li>
+              <li>Bundle lasts 28 days</li>
             </ul>
           </div>
-          <p className="bundle-price">$40</p>
-
-          <button className="buy-button">Buy Now</button>
+        </SwiperSlide>
+        <SwiperSlide className="dark-green-theme">
+          <div className="title" data-swiper-parallax-y="-300">
+            Singularity
+          </div>
+          <div className="text" data-swiper-parallax-y="-100">
+            <ul className="bundle-info">
+              <li>Lunar Whitelist</li>
+              <li>+250000 Instant Points</li>
+              <li>1700 Points per hour</li>
+              <li>VIP Starter Kit</li>
+              <li>MVP Starter Kit</li>
+              <li>3x Singularity Maewing Kit [LvL 224 Maewing]</li>
+              <li>Rank Taming Kit</li>
+              <li>QOL Kit</li>
+              <li>Rank Farm Kit</li>
+              <li>Better Rank Farm Kit</li>
+              <li>Singularity Utilities Kit [Element + Mutagen]</li>
+              <li>Singularity Discord Role</li>
+              <li>Singularity Ingame Tag</li>
+              <li>Lifetime Supporter Role</li>
+              <li>Bundle lasts 28 days</li>
+            </ul>
+          </div>
         </SwiperSlide>
       </Swiper>
     </div>

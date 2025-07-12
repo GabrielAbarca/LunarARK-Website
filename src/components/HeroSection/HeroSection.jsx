@@ -30,7 +30,7 @@ export default function HeroSection() {
           </Link>
           <Link to="/shop" className="hero-btn">
             <CartIcon className="cart-icon hero-icon" />
-            <p>Visit Shop</p>
+            <p>View Bundles</p>
           </Link>
         </section>
       </div>

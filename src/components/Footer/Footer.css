@@ -45,11 +45,11 @@
 .footer-column a {
   color: #04ECF2;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: text-shadow 250ms;
 }
 
 .footer-column a:hover {
-  color: #00FE8C;
+  text-shadow: var(--button-hover);
 }
 
 .footer-divider {
@@ -75,11 +75,11 @@
 .footer-social a {
   font-size: 20px;
   color: #ffffff;
-  transition: color 0.3s;
+  transition: color 250ms ease;
 }
 
 .footer-social a:hover {
-  color: #00FE8C;
+  color: #04ECF2;
 }
 
 .footer-madeby {
@@ -95,11 +95,11 @@
   color: #04ECF2;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: text-shadow 250ms;
 }
 
 .footer-madeby a:hover {
-  color: #00FE8C;
+  text-shadow: var(--button-hover);
 }
 
 .footer-madeby .plain-email {
