@@ -7,6 +7,10 @@ export default function useServerData() {
   if (loading || error || !serverFetchData || serverFetchData.length === 0) {
     return { servers: [], loading, error };
   }
+  const isDataValid = serverFetchData.every( (server) => server && server.ip && server.port && server.name)
+  if (!isDataValid) {
+    return { servers: [], loading, error };
+  }
   const servers = serverFetchData.map((serverData, index) => {
     const cleanServerName =
       serverData.name?.split("[")[0]?.trim() || "Unknown Server";
