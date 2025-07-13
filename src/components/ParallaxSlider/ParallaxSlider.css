@@ -31,7 +31,7 @@
 .parallax-bg {
   position: absolute;
   top: 0;
-  width: 101%;
+  width: 110%;
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -178,7 +178,6 @@
   font-size: 2.2rem;
   font-weight: 900;
   letter-spacing: 1px;
-  text-shadow: 0 0 5px var(--light-blue), 0 0 8px rgba(0, 255, 213, 0.7);
   text-align: center;
   padding-bottom: 40px;
 }
@@ -198,6 +197,7 @@
 /* MEDIA QUERIES */
 @media (min-width: 768px) {
   .parallax-bg {
+    width: 100%;
     left: 0;
   }
   .parallax-slider-wrapper {
