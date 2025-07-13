@@ -3,7 +3,8 @@
 @import "@fontsource/gemunu-libre";
 
 :root {
-  --navbar-bg-color: #1a1a1a06;
+  --navbar-bg-color: #1a1a1a02;
+  --navbar-dropdown-color: #121212;
 
   --light-blue: #00ffd5;
   --light-green: #00fe8c;

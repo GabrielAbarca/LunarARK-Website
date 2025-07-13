@@ -1,6 +1,6 @@
-import useFetchServerData from "../hooks/useFetchServerData.js";
+import useFetchServerData from "./useFetchServerData.js";
 
-export default function ServerData() {
+export default function useServerData() {
   const { serverFetchData, loading, error } =
     useFetchServerData("/api/server-status");
 
@@ -29,7 +29,6 @@ export default function ServerData() {
       status: cleanStatus,
       playerCount: serverData.players ?? 0,
       playerMax: serverData.maxPlayers ?? 0,
-      lastWipe: "06/13",
       key: index,
     };
   });

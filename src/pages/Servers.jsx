@@ -1,12 +1,13 @@
 import ServersMain from "../components/ServersMain/ServersMain.jsx";
 import ServersCards from "../components/ServersCards/ServersCards.jsx";
-import ServerData from "../consts/serverData.js";
+import useServerDataContext from "../context/useServerDataContext.js";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner.jsx";
+import NotFound from "../components/NotFound/NotFound.jsx";
 
 export default function Servers() {
-  const { servers, loading, error } = ServerData();
+  const { servers, loading, error } = useServerDataContext();
 
-  if (error) return console.log("error on retreiving server data.");
+  if (error) return <NotFound />;
 
   return (
     <>
