@@ -16,7 +16,6 @@ export default function useFetchServerData(endpoint) {
         }
         const data = await response.json();
         setServerFetchData(data);
-        console.log("Server data fetched successfully:", data);
       } catch (error) {
         setError(error.message);
         console.log(error.message);
