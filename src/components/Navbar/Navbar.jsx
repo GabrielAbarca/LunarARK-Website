@@ -39,7 +39,7 @@ export default function Navbar() {
             }`}
           >
             <Link className="dropdown-link" to="/servers">
-              Lunar 50X Cluster
+              Lunar 20X Cluster
             </Link>
           </div>
         </div>

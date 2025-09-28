@@ -5,7 +5,8 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import ParticlesBackground from "./components/ParticlesBackground/ParticlesBackground.jsx";
 import Servers from "./pages/Servers.jsx";
 import Shop from "./pages/Shop.jsx";
-import Footer from './components/Footer/Footer.jsx'
+import Footer from "./components/Footer/Footer.jsx";
+import NotFound from "./components/NotFound/NotFound.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/servers" element={<Servers />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

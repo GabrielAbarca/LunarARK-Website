@@ -38,7 +38,7 @@ export default function ServersCards({
     <div className="server-card_container">
       <div className="server-card">
         <div className="card-header">
-          <h2 className="server-title">{clusterInfo.name}</h2>
+          <h3 className="server-title">{clusterInfo.name}</h3>
           <div className="status-container">
             <span className="status-text">{clusterInfo.status}</span>
             <div

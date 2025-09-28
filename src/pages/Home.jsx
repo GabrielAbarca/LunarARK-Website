@@ -4,6 +4,7 @@ import DiscordCTA from "../components/DiscordCTA/DiscordCTA.jsx";
 import Features from "../components/Features/Features.jsx";
 import HeroSection from "../components/HeroSection/HeroSection.jsx";
 import ParticlesBackground from "../components/ParticlesBackground/ParticlesBackground.jsx";
+import MapSection from "../components/MapSection/MapSection.jsx";
 
 export default function Home() {
   const location = useLocation();
@@ -24,6 +25,7 @@ export default function Home() {
       <ParticlesBackground />
       <HeroSection />
       <Features />
+      <MapSection />
       <DiscordCTA />
     </>
   );

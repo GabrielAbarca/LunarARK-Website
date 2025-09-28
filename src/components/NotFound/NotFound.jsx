@@ -20,7 +20,7 @@ export default function NotFound() {
         hoverIntensity={hoverIntensity}
         enableHover={enableHover}
       >
-        not found.
+        Not Found..
       </FuzzyText>
     </div>
   );
