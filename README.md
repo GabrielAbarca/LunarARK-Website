@@ -13,21 +13,6 @@ This is the official website for the ARK server project, built as a **Single Pag
 
 ---
 
-## 📁 Project Structure (Simplified)
-
-src/
-├── components/
-│ ├── Navbar/
-│ ├── Footer/
-│ └── ...
-├── pages/
-│ ├── Home.jsx
-│ ├── Servers.jsx
-│ └── Shop.jsx
-└── App.jsx
-
-
----
 
 ## 👤 Credits
 
