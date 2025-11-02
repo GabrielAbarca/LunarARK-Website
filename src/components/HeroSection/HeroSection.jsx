@@ -28,10 +28,15 @@ export default function HeroSection() {
             <GlobeIcon className="hero-icon" />
             <p>Browse Servers</p>
           </Link>
-          <Link to="/shop" className="hero-btn">
+          <a
+            href="https://lunarark-50x-ase.tebex.io/category/ranks"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-btn"
+          >
             <CartIcon className="cart-icon hero-icon" />
             <p>View Bundles</p>
-          </Link>
+          </a>
         </section>
       </div>
     </main>

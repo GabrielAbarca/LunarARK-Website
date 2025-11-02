@@ -27,12 +27,18 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="links">
         <div className="nav-item">
-          <button
-            onClick={() => handleSubMenu("servers")}
-            className={activeSubMenu === "servers" ? "active-button" : ""}
+          <a
+            href="#servers"
+            onClick={(e) => {
+              e.preventDefault();
+              handleSubMenu("servers");
+            }}
+            className={`nav-link-servers ${
+              activeSubMenu === "servers" ? " active-button" : ""
+            }`}
           >
             Servers
-          </button>
+          </a>
           <div
             className={`dropdown ${
               activeSubMenu === "servers" ? "active" : ""
@@ -45,12 +51,16 @@ export default function Navbar() {
         </div>
 
         <div className="nav-item">
-          <button
-            className={activeSubMenu === "shop" ? "active-button" : ""}
-            onClick={() => handleSubMenu("shop")}
+          <a
+            href="https://lunarark-50x-ase.tebex.io/category/ranks"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`nav-link-shop ${
+              activeSubMenu === "shop" ? " active-button" : ""
+            }`}
           >
             Shop
-          </button>
+          </a>
           <div
             className={`dropdown ${activeSubMenu === "shop" ? "active" : ""}`}
           >
@@ -65,12 +75,18 @@ export default function Navbar() {
         </Link>
 
         <div className="nav-item">
-          <button
-            className={activeSubMenu === "support" ? "active-button" : ""}
-            onClick={() => handleSubMenu("support")}
+          <a
+            href="#support"
+            className={`nav-link-support ${
+              activeSubMenu === "support" ? " active-button" : ""
+            }`}
+            onClick={(e) => {
+              e.preventDefault();
+              handleSubMenu("support");
+            }}
           >
             Support
-          </button>
+          </a>
           <div
             className={`dropdown ${
               activeSubMenu === "support" ? "active" : ""
@@ -88,12 +104,18 @@ export default function Navbar() {
         </div>
 
         <div className="nav-item">
-          <button
-            className={activeSubMenu === "info" ? "active-button" : ""}
-            onClick={() => handleSubMenu("info")}
+          <a
+            href="#info"
+            className={`nav-link-info ${
+              activeSubMenu === "info" ? " active-button" : ""
+            }`}
+            onClick={(e) => {
+              e.preventDefault();
+              handleSubMenu("info");
+            }}
           >
             Info
-          </button>
+          </a>
           <div
             className={`dropdown ${activeSubMenu === "info" ? "active" : ""}`}
           >
@@ -114,6 +136,11 @@ export default function Navbar() {
             >
               Events
             </a>
+
+            <Link className="dropdown-link" to="/shop">
+              Staff
+            </Link>
+
             <Link className="dropdown-link" to="/#features-link">
               Features
             </Link>

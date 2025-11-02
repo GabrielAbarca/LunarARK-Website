@@ -11,11 +11,49 @@
   flex-direction: column;
   width: 100%;
   border: 1px solid #ccc;
+  background-size: cover;
+  background-position: center;
   border-radius: 8px;
   padding: 12px;
   gap: 10px;
   min-width: 380px;
   max-width: 850px;
+}
+.server-card_container:nth-child(4) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_theisland.png');
+}
+.server-card_container:nth-child(13) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner__genesis2.png');
+}
+.server-card_container:nth-child(11) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner__extinction.png');
+}
+.server-card_container:nth-child(14) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_scorchedearth.png');
+}
+.server-card_container:nth-child(9) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_aberration.png');
+}
+.server-card_container:nth-child(5) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_ragnarok.png');
+}
+.server-card_container:nth-child(6) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_valguero.png');
+}
+.server-card_container:nth-child(10) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_crystalisles.png');
+}
+.server-card_container:nth-child(7) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_fjordur.png');
+}
+.server-card_container:nth-child(15) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_lostisland.png');
+}
+.server-card_container:nth-child(12) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_genesis1.png');
+}
+.server-card_container:nth-child(8) .server-card {
+  background-image: url('../../assets/backgrounds/website_mapbanner_thecenter.png');
 }
 
 .card-header {
