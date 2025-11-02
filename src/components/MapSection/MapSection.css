@@ -1,7 +1,7 @@
 /* ----------- BASE (Mobile First) ----------- */
 .map-section {
-  width: 100%;
-  margin: 10rem 0 80px 0;
+  width: 100vw;
+  margin: 18rem 0 80px 0;
 }
 .map-section h2 {
   font-weight: var(--font-weight-1);
@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
   animation: fadeUp 1s ease forwards;
 }
 .map-menu {
@@ -62,12 +62,12 @@
 }
 .dropdown-container .dropdown-item:hover,
 .dropdown-container .dropdown-item:focus {
-  background: #18181c;
-  color: #b3e0ff;
+  background: #a99576;
+  color: #000000;
 }
 .dropdown-container .dropdown-item.active {
-  background: #23232a;
-  color: #00FFD5;
+  background: #F7DBAE;
+  color: #000000;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
@@ -86,20 +86,35 @@
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
-  display: block;
   margin: 0 auto;
 }
 
 /* ----------- CAVE BUTTONS ----------- */
 .cave-button {
   position: absolute;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: .7rem;
+  height: .7rem;
   border-radius: 50%;
   background-color: #00FFD5;
   box-shadow: 0 0 16px #00FFD5;
   animation: pulse 1.2s infinite;
   z-index: 2;
+  cursor: pointer;
+}
+.cave-button.button-active {
+  background-color: #00FFD5;
+  box-shadow:
+    0 0 24px #00FFD5;
+  outline: 2px solid #00FFD5;
+  outline-offset: 2px;
+  animation: none;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s,
+    border 0.2s,
+    outline 0.2s;
+  z-index: 3;
+  scale: 1.18;
 }
 @keyframes pulse {
   0% {
@@ -150,11 +165,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 2.5rem;
   }
   .map-menu {
-    max-width: 500px;
+    max-width: 550px;
   }
   .dropdown-container .dropdown-item {
     min-height: 80px;
@@ -163,13 +178,14 @@
     font-size: 1rem;
   }
   .map-content {
-    width: 500px;
-    max-width: 500px;
-    flex: 2 1 400px;
+    width: 550px;
+    flex: none;
   }
   .map-image {
-    width: 500px;
-    max-width: 500px;
+    width: 100%;
+  }
+  .map-section h2 {
+    font-size: 4rem;
   }
   .cave-theIsland-1 { top: 85px; left: 71px; }     
   .cave-theIsland-2 { top: 426px; left: 284px; }  
@@ -200,25 +216,46 @@
 /* ----------- Responsive: Desktop ----------- */
 @media (min-width: 1024px) {
   .map-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-content: center;  
-    max-width: 80rem;
-    margin: 0 auto;           
-    padding-top: 8rem;
-    gap: 2rem;                
+  flex-direction: column;
   }
   .map-menu {
-    height: 100%;
+    max-width: 900px;
+  }
+  .map-content {
+    width: 900px;
+    flex: none;
+  }
+  .map-image {
     width: 100%;
+  }
+  .dropdown-container .dropdown-item h4{
+    font-size: 1.2rem;
+  }
+    .map-section h2 {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 1900px) {
+  .map-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6rem;           /* espacio entre columnas */
+  padding: 8rem 0rem;  /* top + horizontales */
+  align-items: center;
+  justify-content: center; /* no necesario, pero está bien */
+}
+  .map-menu {
+    height: 100%;
+    width: 90%;
+    min-width: 200px;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-end;
     justify-content: flex-start;
+    margin-left: 2rem;
   }
   .map-menu .dropdown-container {
-    width: 100%;
     max-width: 100%;
     overflow: auto;
     flex-direction: column;
@@ -236,24 +273,21 @@
   }
    .map-content {
     position: relative;
-    width: 640px;
-    max-width: 640px;
+    width: 700px;
+    align-items: center;
+    height: 100%;
     margin: 0 auto;
     display: block; 
+    align-content: top;
   }
   .map-image {
     width: 100%;
-    max-width: 640px;
-    height: auto;
     border-radius: 0.5rem;
     display: block;
     margin: 0 auto;
   }
-  .map-section h2 {
-    font-size: 3.5rem;
-  }
   .cave-theIsland-1 { top: 85px; left: 71px; }
-  .cave-theIsland-2 { top: 426px; left: 284px; }
+  .cave-theIsland-2 { top: 40px; left: 284px; }
   .cave-theCenter-1 { top: 114px; left: 312px; }
   .cave-theCenter-2 { top: 426px; left: 213px; }
   .cave-scorchedEarth-1 { top: 154px; left: 103px; }
@@ -276,4 +310,65 @@
   .cave-valguero-2 { top: 362px; left: 143px; }
   .cave-fjordur-1 { top: 154px; left: 120px; }
   .cave-fjordur-2 { top: 427px; left: 267px; }
+  
+ 
+}
+ .map-info-container {
+    width: 450px;
+    max-width: 450px;
+    height: 100%;
+    display: flex;
+    background-color: #101014;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    justify-self: center;
+    align-self: flex-start;
+    border-radius: 1rem;
+    border: 3px solid #e7e7e759;
+    box-shadow: 0 0 5px #e7e7e759;
+    margin-right: 2rem;
+}
+
+.cave-info-block {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #101014;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    justify-self: center;
+    align-self: flex-start;
+    border-radius: 1rem;
+    padding: 2rem 0;
+    
+}
+.info-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 130%;
+  justify-content: flex-start;
+}
+.info-row-1 {
+  display: flex;
+  flex-direction: column;
+ justify-content: space-around;
+ gap: 1.5rem;
+}
+.location-header, .cave-header {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.video-container {
+  margin: 5rem auto 0 auto;
+  width: 100%;
+}
+.video-container iframe {
+  border-radius: 1rem;
+  border: 2px solid #00ffd5;
+  box-shadow: 0 0 16px #00ffd5;
 }

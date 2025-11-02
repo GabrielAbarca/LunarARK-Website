@@ -6,7 +6,7 @@ import { Parallax, Pagination, Navigation } from "swiper/modules";
 import lunarBg from "../../assets/lunar-bg-2.png";
 import LunarFerox from "../../assets/LunarFerox.png";
 import "./ParallaxSlider.css";
-import BuildingShop from "../Icons/BuildingShop";
+import LearnMoreArrow from "../Icons/LearnMoreArrow.jsx";
 
 export default function ParallaxSlider() {
   const isMobile = window.innerWidth <= 1025;
@@ -23,6 +23,7 @@ export default function ParallaxSlider() {
         parallax={true}
         pagination={false}
         navigation={true}
+        allowTouchMove={false}
         modules={[Parallax, Pagination, Navigation]}
         className="mySwiper"
       >
@@ -36,139 +37,80 @@ export default function ParallaxSlider() {
         ></div>
         <SwiperSlide>
           <div className={"title title-h1"} data-swiper-parallax-y="-300">
-            <h1>Lunar Shop</h1>
+            <h1>Lunar Crew</h1>
           </div>
           <a
             href="https://lunarark-50x-ase.tebex.io/category/ranks"
-            target="_blank"
+            target="https://lunarark-50x-ase.tebex.io/category/misc"
             rel="noopener noreferrer"
             className="buy-button"
           >
-            <BuildingShop className="building-shop-icon" />
-           <p>Visit Shop</p>
+           <p>Learn more</p>
+            <LearnMoreArrow className="learn-more-icon" />
+            
           </a>
         </SwiperSlide>
         <SwiperSlide className="purple-theme">
           <div className="title" data-swiper-parallax-y="-300">
-            Stardust
+            Head of Operations
           </div>
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
-              <li>Lunar Whitelist</li>
-              <li>+10000 Instant Points</li>
-              <li>600 Points per hour</li>
-              <li>Stardust Discord Role</li>
-              <li>Stardust Ingame Tag</li>
-              <li>Lifetime Supporter Role</li>
-              <li>Bundle lasts 28 days</li>
+              <li className="staff-name">miner44</li>
+              <li className="staff-name">DGLeon</li>
             </ul>
           </div>
         </SwiperSlide>
         <SwiperSlide className="blue-theme">
           <div className="title" data-swiper-parallax-y="-300">
-            Nebula
+            Head of Development
           </div>
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
-              <li>Lunar Whitelist</li>
-              <li>+25000 Instant Points</li>
-              <li>800 Points per hour</li>
-              <li>VIP Starter Kit</li>
-              <li>Rank Farm Kit</li>
-              <li>Nebula Discord Role</li>
-              <li>Nebula Ingame Tag</li>
-              <li>Lifetime Supporter Role</li>
-              <li>Bundle lasts 28 days</li>
+              <li className="staff-name">556ms</li>
+              
             </ul>
           </div>
         </SwiperSlide>
         <SwiperSlide className="dark-purple-theme">
           <div className="title" data-swiper-parallax-y="-300">
-            Comet
+            Head of Staff
           </div>
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
-              <li>Lunar Whitelist</li>
-              <li>+40000 Instant Points</li>
-              <li>1000 Points per hour</li>
-              <li>VIP Starter Kit</li>
-              <li>Rank Farm Kit</li>
-              <li>Comet Discord Role</li>
-              <li>Comet Ingame Tag</li>
-              <li>Lifetime Supporter Role</li>
-              <li>Bundle lasts 28 days</li>
+              <li className="staff-name">Albin</li>
             </ul>
           </div>
         </SwiperSlide>
         <SwiperSlide className="reddish-theme">
           <div className="title" data-swiper-parallax-y="-300">
-            Cosmos
+            Lead Developer
           </div>
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
-              <li>Lunar Whitelist</li>
-              <li>+60000 Instant Points</li>
-              <li>1200 Points per hour</li>
-              <li>VIP Starter Kit</li>
-              <li>MVP Starter Kit</li>
-              <li>3x Cosmos Maewing Kit [LvL 150 Maewing]</li>
-              <li>Rank Taming Kit</li>
-              <li>QOL Kit</li>
-              <li>Rank Farm Kit</li>
-              <li>Better Rank Farm Kit</li>
-              <li>Cosmos Utilities Kit [Element + Mutagen]</li>
-              <li>Cosmos Discord Role</li>
-              <li>Cosmos Ingame Tag</li>
-              <li>Lifetime Supporter Role</li>
-              <li>Bundle lasts 28 days</li>
+              <li className="staff-name">Nielsvdb01</li>
+    
             </ul>
           </div>
         </SwiperSlide>
         <SwiperSlide className="yellowish-theme">
           <div className="title" data-swiper-parallax-y="-300">
-            Supernova
+            Lead Admin
           </div>
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
-              <li>Lunar Whitelist</li>
-              <li>+120000 Instant Points</li>
-              <li>1300 Points per hour</li>
-              <li>VIP Starter Kit</li>
-              <li>MVP Starter Kit</li>
-              <li>3x Supernova Maewing Kit [LvL 180 Maewing]</li>
-              <li>Rank Taming Kit</li>
-              <li>QOL Kit</li>
-              <li>Rank Farm Kit</li>
-              <li>Better Rank Farm Kit</li>
-              <li>Supernova Utilities Kit [Element + Mutagen]</li>
-              <li>Supernova Discord Role</li>
-              <li>Supernova Ingame Tag</li>
-              <li>Lifetime Supporter Role</li>
-              <li>Bundle lasts 28 days</li>
+              <li className="staff-name">Nikii</li>
+
             </ul>
           </div>
         </SwiperSlide>
         <SwiperSlide className="dark-green-theme">
           <div className="title" data-swiper-parallax-y="-300">
-            Singularity
+            Event Manager
           </div>
           <div className="text" data-swiper-parallax-y="-100">
             <ul className="bundle-info">
-              <li>Lunar Whitelist</li>
-              <li>+250000 Instant Points</li>
-              <li>1700 Points per hour</li>
-              <li>VIP Starter Kit</li>
-              <li>MVP Starter Kit</li>
-              <li>3x Singularity Maewing Kit [LvL 224 Maewing]</li>
-              <li>Rank Taming Kit</li>
-              <li>QOL Kit</li>
-              <li>Rank Farm Kit</li>
-              <li>Better Rank Farm Kit</li>
-              <li>Singularity Utilities Kit [Element + Mutagen]</li>
-              <li>Singularity Discord Role</li>
-              <li>Singularity Ingame Tag</li>
-              <li>Lifetime Supporter Role</li>
-              <li>Bundle lasts 28 days</li>
+              <li className="staff-name">Optimist24-7</li>
             </ul>
           </div>
         </SwiperSlide>

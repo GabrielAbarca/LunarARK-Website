@@ -4,14 +4,26 @@ export default function useServerData() {
   const { serverFetchData, loading, error } =
     useFetchServerData("/api/server-status");
 
-  if (loading || error || !serverFetchData || serverFetchData.length === 0) {
+  const payload = Array.isArray(serverFetchData)
+    ? serverFetchData
+    : serverFetchData?.data ?? null;
+
+  if (serverFetchData && serverFetchData.slow && serverFetchData.slow.length) {
+    console.warn("[useServerData] slow servers:", serverFetchData.slow);
+  }
+
+  if (loading || error || !payload || payload.length === 0) {
     return { servers: [], loading, error };
   }
-  const isDataValid = serverFetchData.every( (server) => server && server.ip && server.port && server.name)
+
+  const isDataValid = payload.every(
+    (server) => server && server.ip && server.port && server.name
+  );
   if (!isDataValid) {
     return { servers: [], loading, error };
   }
-  const servers = serverFetchData.map((serverData, index) => {
+
+  const servers = payload.map((serverData, index) => {
     const cleanServerName =
       serverData.name?.split("[")[0]?.trim() || "Unknown Server";
     const joinedIp = `${serverData.ip || "unknown"}:${
