@@ -10,7 +10,7 @@ This is the official website for the ARK server project, built as a **Single Pag
 
 - [React](https://reactjs.org/)
 - [React Router DOM](https://reactrouter.com/)
-
+- [Node JS](https://nodejs.org/)
 ---
 
 
