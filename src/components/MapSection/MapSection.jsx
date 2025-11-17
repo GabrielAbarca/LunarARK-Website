@@ -427,7 +427,15 @@ export default function MapSection() {
                     </div>
                   </div>
                   <div className="info-row cave-header">
-                    <p>Cave information</p>
+                    <p>Cave Information</p>
+                  </div>
+                  <div className="info-row">
+                    <p>
+                      Cave name:{" "}
+                      <span>
+                        {caveData[currentMapKey][selectedCaveIdx].size}
+                      </span>
+                    </p>
                   </div>
                   <div className="info-row">
                     <p>
