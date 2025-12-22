@@ -13,16 +13,16 @@ export default function Footer() {
 
         <div className="flex gap-12 md:gap-24 text-center">
           <div className="flex flex-col gap-2">
-            <Link to="/shop" className="text-neon-blue hover:text-white hover:shadow-[0_0_10px_rgba(0,255,213,0.5)] transition-all duration-300">Shop</Link>
-            <Link to="/servers" className="text-neon-blue hover:text-white hover:shadow-[0_0_10px_rgba(0,255,213,0.5)] transition-all duration-300">Servers</Link>
+            <Link to="/shop" className="text-neon-blue hover:text-white transition-all duration-300">Shop</Link>
+            <Link to="/servers" className="text-neon-blue hover:text-white transition-all duration-300">Servers</Link>
           </div>
           <div className="flex flex-col gap-2">
-            <a href="mailto:info@lunar-ark-servers.net" className="text-neon-blue hover:text-white hover:shadow-[0_0_10px_rgba(0,255,213,0.5)] transition-all duration-300">Contact</a>
+            <a href="mailto:info@lunar-ark-servers.net" className="text-neon-blue hover:text-white transition-all duration-300">Contact</a>
             <a
               href="https://discord.com/channels/1180286860476555265/1180288468488814743"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neon-blue hover:text-white hover:shadow-[0_0_10px_rgba(0,255,213,0.5)] transition-all duration-300"
+              className="text-neon-blue hover:text-white transition-all duration-300"
             >
               Discord
             </a>
