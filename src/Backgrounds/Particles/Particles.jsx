@@ -5,8 +5,6 @@
 import { useEffect, useRef } from "react";
 import { Renderer, Camera, Geometry, Program, Mesh } from "ogl";
 
-import './Particles.css';
-
 const defaultColors = ["#ffffff", "#ffffff", "#ffffff"];
 
 const hexToRgb = (hex) => {
@@ -230,7 +228,7 @@ const Particles = ({
   return (
     <div
       ref={containerRef}
-      className={`particles-container ${className}`}
+      className={`relative w-full h-full ${className}`}
     />
   );
 };

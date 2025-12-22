@@ -1,49 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-green: #00fe8c;
+  --color-neon-blue: #00ffd5;
+  --color-dark-bg: #0a0a0a;
+  --color-card-bg: #121212;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-gemunu: "Gemunu Libre", sans-serif;
+  --font-gugi: "Gugi", sans-serif;
+}
+
 @import "@fontsource/montserrat";
 @import "@fontsource/gugi";
 @import "@fontsource/gemunu-libre";
 
 :root {
-  --navbar-bg-color: #1a1a1a00;
-  --navbar-dropdown-color: #121212;
-
-  --light-blue: #00ffd5;
-  --light-green: #00fe8c;
-  --button-hover: 0 0 6px #00ffd5;
-  --font-color-3: #ffffff;
-  --font-color-4: #000000;
-
-  --font-weight-1: 700;
-  --font-weight-2: 500;
-
-  --font-size-1: 1.125rem; /* 18px */
-  --font-size-2: 1rem; /* 16px */
-  --font-size-3: 0.875rem; /* 14px */
-  --font-size-4: 0.75rem; /* 12px */
-  --font-size-5: 0.625rem; /* 10px */
-  --font-size-6: 0.5rem; /* 8px */
-
-  --font-family-1: "Montserrat", sans-serif;
-  --font-family-2: "Gemunu Libre", sans-serif;
-  --font-family-3: "Gugi", sans-serif;
+  --neon-green: #00fe8c;
+  --neon-blue: #00ffd5;
+  --dark-bg: #0a0a0a;
+  --card-bg: #121212;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  scrollbar-width: none;
-  font-family: var(--font-family-1);
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #121212;
-  color: var(--font-color-3);
-}
-@keyframes fadeUp {
-  to {
-    opacity: 1;
+@layer base {
+  body {
+    @apply bg-dark-bg text-white font-montserrat overflow-x-hidden;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(0, 255, 213, 0.15), transparent 50%),
+      radial-gradient(circle at 0% 50%, rgba(0, 254, 140, 0.1), transparent 50%);
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-gugi uppercase tracking-wider;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-card-bg/60 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+  
+  .neon-text-green {
+    text-shadow: 0 0 10px rgba(0, 254, 140, 0.5);
+  }
+  
+  .neon-text-blue {
+    text-shadow: 0 0 10px rgba(0, 255, 213, 0.5);
+  }
+  
+  .neon-border-green {
+    box-shadow: 0 0 10px rgba(0, 254, 140, 0.3);
+  }
+  
+  .neon-border-blue {
+    box-shadow: 0 0 10px rgba(0, 255, 213, 0.3);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-blue);
 }
