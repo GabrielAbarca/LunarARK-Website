@@ -31,7 +31,7 @@ export default function DiscordCTA() {
           href="https://discordapp.com/channels/1180286860476555265/1180288468488814743"
           className="flex items-center gap-3 px-8 py-3 rounded-lg border border-neon-blue text-neon-blue hover:bg-neon-blue/10 hover:shadow-[0_0_20px_rgba(0,255,213,0.3)] transition-all duration-300 group"
         >
-          <DiscordIcon className="w-5 h-5 group-hover:text-white transition-colors duration-300" />
+          <DiscordIcon className="w-5 h-5 transition-colors duration-300" />
           <span className="font-bold tracking-wide">Join Now</span>
         </a>
       </motion.section>
