@@ -7,6 +7,8 @@ export default function ClipboardIcon () {
         strokeWidth={1.5}
         stroke="currentColor"
         className="clipboard-icon"
+        width={46}
+        height={46}
       >
         <path
           strokeLinecap="round"
