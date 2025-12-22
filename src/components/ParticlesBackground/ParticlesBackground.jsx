@@ -2,14 +2,7 @@ import Particles from '../../Backgrounds/Particles/Particles.jsx';
 
 export default function Background() {
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '600px',
-        position: 'absolute',
-        zIndex: -100,
-      }}
-    >
+    <div className="absolute top-0 left-0 w-full h-[600px] -z-50 pointer-events-none">
       <Particles
         particleColors={['#00f7fd', '#00fe8c']}
         particleCount={200}
