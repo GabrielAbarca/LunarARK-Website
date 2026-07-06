@@ -6,7 +6,6 @@ import { Parallax, Pagination, Navigation } from "swiper/modules";
 import lunarBg from "../../assets/lunar-bg-2.png";
 import LunarFerox from "../../assets/LunarFerox.png";
 import LearnMoreArrow from "../Icons/LearnMoreArrow.jsx";
-import { cn } from "../../lib/utils";
 
 export default function ParallaxSlider() {
   const isMobile = window.innerWidth <= 1025;
