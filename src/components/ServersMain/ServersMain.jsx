@@ -1,10 +1,6 @@
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function ServersMain() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => setIsLoaded(true), []);
-
   return (
     <main className="w-full pt-32 md:pt-40 pb-12 flex flex-col items-center justify-center">
       <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-center">
