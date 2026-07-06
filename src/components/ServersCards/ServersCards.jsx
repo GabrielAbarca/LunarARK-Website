@@ -30,7 +30,7 @@ const mapBackgrounds = {
   "Crystal Isles": crystalIsles,
   "Fjordur": fjordur,
   "Lost Island": lostIsland,
-  "Genesis Part 1": genesis1, // Adjust key if needed based on actual data
+  "Genesis Part 1": genesis1,
   "Genesis 1": genesis1,
   "The Center": theCenter,
 };

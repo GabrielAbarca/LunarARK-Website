@@ -28,7 +28,6 @@ export default function Servers() {
                 status={server.status}
                 playerCount={server.playerCount}
                 maxPlayers={server.playerMax}
-                lastWipe={server.lastWipe}
               />
             ))}
           </div>

@@ -1,7 +1,7 @@
 {
-  "name": "reactbits",
+  "name": "lunar-ark-website",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -19,7 +19,6 @@
     "@tailwindcss/vite": "^4.1.10",
     "clsx": "^2.1.1",
     "framer-motion": "^12.18.1",
-    "gsap": "^3.13.0",
     "ogl": "^1.0.11",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
