@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 
+const REFRESH_INTERVAL_MS = 30000;
+const REQUEST_TIMEOUT_MS = 30000;
+
 export default function useServerData() {
   const [servers, setServers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     let mounted = true;
+    let firstLoad = true;
+    let controller;
 
     if (!apiUrl) {
       setError("Server data is temporarily unavailable.");
@@ -16,13 +22,14 @@ export default function useServerData() {
       return;
     }
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000);
-
     async function load() {
+      controller = new AbortController();
+      const activeController = controller;
+      const timeoutId = setTimeout(() => activeController.abort(), REQUEST_TIMEOUT_MS);
+
       try {
         const res = await fetch(`${apiUrl}/api/server-status`, {
-          signal: controller.signal,
+          signal: activeController.signal,
         });
         if (!res.ok) throw new Error("Failed to fetch server status");
 
@@ -45,9 +52,14 @@ export default function useServerData() {
         if (mounted) {
           setServers(mapped);
           setError(null);
+          setLastUpdated(Date.now());
         }
       } catch (err) {
-        if (mounted) {
+        // Only surface an error on the first load. A failed background
+        // refresh keeps the last good data on screen instead of replacing
+        // it with the error state; the "last updated" age keeps climbing,
+        // which signals the data is going stale.
+        if (mounted && firstLoad) {
           setError(
             err.name === "AbortError"
               ? "The server took too long to respond. Please try again."
@@ -57,17 +69,19 @@ export default function useServerData() {
       } finally {
         clearTimeout(timeoutId);
         if (mounted) setLoading(false);
+        firstLoad = false;
       }
     }
 
     load();
+    const intervalId = setInterval(load, REFRESH_INTERVAL_MS);
 
     return () => {
       mounted = false;
-      clearTimeout(timeoutId);
-      controller.abort();
+      clearInterval(intervalId);
+      if (controller) controller.abort();
     };
   }, [apiUrl]);
 
-  return { servers, loading, error };
+  return { servers, loading, error, lastUpdated };
 }

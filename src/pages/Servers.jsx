@@ -5,7 +5,7 @@ import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner.jsx";
 import ServersCountdown from "../components/ServersCountdown/ServersCountdown.jsx";
 
 export default function Servers() {
-  const { servers, loading, error } = useServerData();
+  const { servers, loading, error, lastUpdated } = useServerData();
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function Servers() {
         <LoadingSpinner />
       ) : (
         <>
-          <ServersCountdown />
+          <ServersCountdown lastUpdated={lastUpdated} />
           <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-6 pb-20">
             {servers.map((server) => (
               <ServersCards
