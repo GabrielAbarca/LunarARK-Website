@@ -51,7 +51,7 @@ export default function Navbar() {
       label: "Info",
       href: "#info",
       dropdown: [
-        { label: "Discord", href: "https://discordapp.com/channels/1180286860476555265/1180288468488814743", external: true },
+        { label: "Discord", href: "https://discord.gg/FmKVFdnYs8", external: true },
         { label: "Events", href: "https://discordapp.com/channels/1180286860476555265/1370072768095326408", external: true },
         { label: "Staff", to: "/shop" },
         { label: "Features", to: "/#features-link" }
