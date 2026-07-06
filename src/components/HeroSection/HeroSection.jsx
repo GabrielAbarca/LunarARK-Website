@@ -3,10 +3,14 @@ import { motion } from "framer-motion";
 import ShinyText from "../../TextAnimations/ShinyText/ShinyText.jsx";
 import CartIcon from "../Icons/CartIcon.jsx";
 import GlobeIcon from "../Icons/GlobeIcon.jsx";
+import HeroServerCard from "./HeroServerCard.jsx";
 
 export default function HeroSection() {
+  // Server data intentionally empty for now; wire to useServerData() later.
+  const servers = [];
+
   return (
-    <main className="w-full min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-20 relative overflow-hidden">
+    <main className="w-full min-h-screen flex flex-col items-center justify-start pt-32 md:pt-40 pb-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-blue/10 rounded-full blur-[100px]" />
@@ -67,6 +71,29 @@ export default function HeroSection() {
             <p className="font-bold tracking-wider uppercase">View Bundles</p>
           </a>
         </motion.section>
+
+        {servers.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
+            className="mt-16 w-full overflow-x-auto pb-2"
+          >
+            <div className="flex gap-4 w-max mx-auto px-4">
+              {servers.map((server) => (
+                <HeroServerCard
+                  key={server.key}
+                  serverName={server.serverName}
+                  mapName={server.mapName}
+                  status={server.status}
+                  playerCount={server.playerCount}
+                  maxPlayers={server.playerMax}
+                  ipAddress={server.ipAddress}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
     </main>
   );
