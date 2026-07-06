@@ -37,17 +37,20 @@ export default function useServerData() {
 
         const payload = Array.isArray(json.data) ? json.data : [];
 
-        const mapped = payload.map((s, index) => ({
-          serverName: s.name?.split("[")[0]?.trim() ?? "Unknown Server",
-          ipAddress: `${s.ip ?? "unknown"}:${s.port ?? "unknown"}`,
-          mapName: s.map?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "Unknown Map",
-          status: s.status
-            ? s.status.replace("dead", "Offline").replace(/^./, c => c.toUpperCase())
-            : "Unknown",
-          playerCount: s.players ?? 0,
-          playerMax: s.maxPlayers ?? 0,
-          key: index,
-        }));
+        const mapped = payload.map((s) => {
+          const ipAddress = `${s.ip ?? "unknown"}:${s.port ?? "unknown"}`;
+          return {
+            serverName: s.name?.split("[")[0]?.trim() ?? "Unknown Server",
+            ipAddress,
+            mapName: s.map?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "Unknown Map",
+            status: s.status
+              ? s.status.replace("dead", "Offline").replace(/^./, c => c.toUpperCase())
+              : "Unknown",
+            playerCount: s.players ?? 0,
+            playerMax: s.maxPlayers ?? 0,
+            key: ipAddress,
+          };
+        });
 
         if (mounted) {
           setServers(mapped);
