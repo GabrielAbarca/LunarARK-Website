@@ -53,7 +53,11 @@ export default function Navbar() {
       dropdown: [
         { label: "Discord", href: "https://discordapp.com/channels/1180286860476555265/1180288468488814743", external: true },
         { label: "Events", href: "https://discordapp.com/channels/1180286860476555265/1370072768095326408", external: true },
+<<<<<<< HEAD
         { label: "Staff", to: "/shop" }, // Preserving original link destination even if label says Staff -> Shop? Original code did this.
+=======
+        { label: "Staff", to: "/shop" },
+>>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
         { label: "Features", to: "/#features-link" }
       ]
     }

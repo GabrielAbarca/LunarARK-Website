@@ -10,7 +10,11 @@ This is the official website for the ARK server project, built as a **Single Pag
 
 - [React](https://reactjs.org/)
 - [React Router DOM](https://reactrouter.com/)
+<<<<<<< HEAD
 - [Node JS](https://nodejs.org/)
+=======
+- [Vite](https://vite.dev/)
+>>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
 ---
 
 
@@ -25,6 +29,9 @@ Thank you for visiting!
 
 This website is **not open source**.  
 All rights reserved by the developer.
+<<<<<<< HEAD
 
 ---
 remote code from GitHub
+=======
+>>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed

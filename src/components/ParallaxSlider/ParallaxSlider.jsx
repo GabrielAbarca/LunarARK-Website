@@ -6,10 +6,14 @@ import { Parallax, Pagination, Navigation } from "swiper/modules";
 import lunarBg from "../../assets/lunar-bg-2.png";
 import LunarFerox from "../../assets/LunarFerox.png";
 import LearnMoreArrow from "../Icons/LearnMoreArrow.jsx";
+<<<<<<< HEAD
 import { cn } from "../../lib/utils";
+=======
+import useMediaQuery from "../../hooks/useMediaQuery";
+>>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
 
 export default function ParallaxSlider() {
-  const isMobile = window.innerWidth <= 1025;
+  const isMobile = useMediaQuery("(max-width: 1025px)");
   const backgroundToUse = isMobile ? LunarFerox : lunarBg;
 
   return (

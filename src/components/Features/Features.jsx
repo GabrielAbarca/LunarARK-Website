@@ -5,7 +5,10 @@ import ConfigIcon from "../Icons/ConfigIcon.jsx";
 import LockIcon from "../Icons/LockIcon.jsx";
 import TrophyIcon from "../Icons/Trophy.jsx";
 import RocketIcon from "../Icons/RocketIcon.jsx";
+<<<<<<< HEAD
 import ParticlesBackground from "../ParticlesBackground/ParticlesBackground.jsx";
+=======
+>>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
 import { motion } from "framer-motion";
 
 export default function Features() {
