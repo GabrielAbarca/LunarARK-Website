@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import DiscordCTA from "../components/DiscordCTA/DiscordCTA.jsx";
 import Features from "../components/Features/Features.jsx";
 import HeroSection from "../components/HeroSection/HeroSection.jsx";
-import ParticlesBackground from "../components/ParticlesBackground/ParticlesBackground.jsx";
 import MapSection from "../components/MapSection/MapSection.jsx";
 
 export default function Home() {
@@ -22,7 +21,6 @@ export default function Home() {
 
   return (
     <>
-      <ParticlesBackground />
       <HeroSection />
       <Features />
       <MapSection />
