@@ -10,9 +10,20 @@ export default function useServerData() {
   useEffect(() => {
     let mounted = true;
 
+    if (!apiUrl) {
+      setError("Server data is temporarily unavailable.");
+      setLoading(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000);
+
     async function load() {
       try {
-        const res = await fetch(`${apiUrl}/api/server-status`);
+        const res = await fetch(`${apiUrl}/api/server-status`, {
+          signal: controller.signal,
+        });
         if (!res.ok) throw new Error("Failed to fetch server status");
 
         const json = await res.json();
@@ -36,8 +47,15 @@ export default function useServerData() {
           setError(null);
         }
       } catch (err) {
-        if (mounted) setError(err.message);
+        if (mounted) {
+          setError(
+            err.name === "AbortError"
+              ? "The server took too long to respond. Please try again."
+              : err.message
+          );
+        }
       } finally {
+        clearTimeout(timeoutId);
         if (mounted) setLoading(false);
       }
     }
@@ -46,6 +64,8 @@ export default function useServerData() {
 
     return () => {
       mounted = false;
+      clearTimeout(timeoutId);
+      controller.abort();
     };
   }, [apiUrl]);
 
