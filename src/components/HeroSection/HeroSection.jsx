@@ -1,15 +1,10 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ShinyText from "../../TextAnimations/ShinyText/ShinyText.jsx";
 import CartIcon from "../Icons/CartIcon.jsx";
 import GlobeIcon from "../Icons/GlobeIcon.jsx";
-import { cn } from "../../lib/utils";
 
 export default function HeroSection() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => setIsLoaded(true), []);
-
   return (
     <main className="w-full min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-20 relative overflow-hidden">
       {/* Background Elements */}
