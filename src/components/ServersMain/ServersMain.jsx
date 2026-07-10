@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { useEffect, useState } from 'react';
-=======
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
 import { motion } from 'framer-motion';
 
 export default function ServersMain() {

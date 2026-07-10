@@ -1,13 +1,29 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ShinyText from "../../TextAnimations/ShinyText/ShinyText.jsx";
 import CartIcon from "../Icons/CartIcon.jsx";
 import GlobeIcon from "../Icons/GlobeIcon.jsx";
 import HeroServerCard from "./HeroServerCard.jsx";
+import HeroServerCardSkeleton from "./HeroServerCardSkeleton.jsx";
+import HeroClusterToggle from "./HeroClusterToggle.jsx";
+import useServerData from "../../hooks/useServerData.js";
+
+// Number of placeholder cards shown while live status loads.
+const SKELETON_COUNT = 3;
 
 export default function HeroSection() {
-  // Server data intentionally empty for now; wire to useServerData() later.
-  const servers = [];
+  // Non-blocking: the hero paints immediately and the card row below swaps
+  // from skeletons to real cards (or a degrade line) as the fetch resolves.
+  const { clusters, loading, error } = useServerData();
+  const [activeClusterId, setActiveClusterId] = useState("2man");
+
+  // Fall back to the first available cluster if the default id isn't present
+  // (e.g. a partial payload). Undefined only while clusters is still empty, in
+  // which case the loading/degrade branches render and never read it.
+  const activeCluster =
+    clusters.find((cluster) => cluster.id === activeClusterId) ?? clusters[0];
+  const hasClusters = clusters.length > 0;
 
   return (
     <main className="w-full min-h-screen flex flex-col items-center justify-start pt-32 md:pt-40 pb-20 relative overflow-hidden">
@@ -72,28 +88,74 @@ export default function HeroSection() {
           </a>
         </motion.section>
 
-        {servers.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.8 }}
-            className="mt-16 w-full overflow-x-auto pb-2"
-          >
-            <div className="flex gap-4 w-max mx-auto px-4">
-              {servers.map((server) => (
-                <HeroServerCard
-                  key={server.key}
-                  serverName={server.serverName}
-                  mapName={server.mapName}
-                  status={server.status}
-                  playerCount={server.playerCount}
-                  maxPlayers={server.playerMax}
-                  ipAddress={server.ipAddress}
-                />
-              ))}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+          className="mt-16 w-full"
+        >
+          {loading ? (
+            <div className="w-full overflow-x-auto pb-2">
+              <div className="flex gap-4 w-max mx-auto px-4">
+                {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+                  <HeroServerCardSkeleton key={i} />
+                ))}
+              </div>
             </div>
-          </motion.div>
-        )}
+          ) : !error && hasClusters ? (
+            <>
+              {/* Client-side cluster switch — both clusters are already in the
+                  payload, so selecting one never triggers a refetch. Hidden when
+                  there's nothing to switch between. */}
+              {clusters.length > 1 && (
+                <HeroClusterToggle
+                  clusters={clusters}
+                  activeId={activeCluster.id}
+                  onSelect={setActiveClusterId}
+                />
+              )}
+              {activeCluster.servers.length > 0 ? (
+                <div className="w-full overflow-x-auto pb-2">
+                  <div className="flex gap-4 w-max mx-auto px-4">
+                    {activeCluster.servers.map((server) => (
+                      <HeroServerCard
+                        key={server.key}
+                        serverName={server.serverName}
+                        mapName={server.mapName}
+                        status={server.status}
+                        playerCount={server.playerCount}
+                        maxPlayers={server.playerMax}
+                        ipAddress={server.ipAddress}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                // One cluster failed to poll / has no servers — degrade only this
+                // cluster so the other stays switchable and displayable.
+                <p className="text-center text-sm text-gray-500 font-montserrat px-4">
+                  No live servers in this cluster right now —{" "}
+                  <Link
+                    to="/servers"
+                    className="text-neon-blue/80 hover:text-neon-blue underline underline-offset-2 transition-colors duration-300"
+                  >
+                    see the servers page
+                  </Link>
+                </p>
+              )}
+            </>
+          ) : (
+            <p className="text-center text-sm text-gray-500 font-montserrat px-4">
+              Live status unavailable —{" "}
+              <Link
+                to="/servers"
+                className="text-neon-blue/80 hover:text-neon-blue underline underline-offset-2 transition-colors duration-300"
+              >
+                see the servers page
+              </Link>
+            </p>
+          )}
+        </motion.div>
       </div>
     </main>
   );

@@ -1,15 +1,24 @@
+import { useSearchParams } from "react-router-dom";
 import ServersMain from "../components/ServersMain/ServersMain.jsx";
 import ServersCards from "../components/ServersCards/ServersCards.jsx";
+import ServersClusterFilter from "../components/ServersClusterFilter/ServersClusterFilter.jsx";
 import useServerData from "../hooks/useServerData.js";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner.jsx";
-<<<<<<< HEAD
-import NotFound from "../components/NotFound/NotFound.jsx";
-=======
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
 import ServersCountdown from "../components/ServersCountdown/ServersCountdown.jsx";
 
 export default function Servers() {
-  const { servers, loading, error, lastUpdated } = useServerData();
+  const { clusters, loading, error, lastUpdated } = useServerData();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // The selected cluster lives in the URL (?cluster=<id>) so views are
+  // shareable and back/forward steps between filter states. An invalid or
+  // missing param falls back to 2MAN (then to the first cluster) without
+  // rewriting the URL — it stays clean until the visitor interacts.
+  const clusterParam = searchParams.get("cluster");
+  const activeCluster =
+    clusters.find((cluster) => cluster.id === clusterParam) ??
+    clusters.find((cluster) => cluster.id === "2man") ??
+    clusters[0];
 
   return (
     <>
@@ -28,28 +37,38 @@ export default function Servers() {
         <LoadingSpinner />
       ) : (
         <>
-<<<<<<< HEAD
-          <ServersCountdown />
-=======
+          {/* Client-side filter — both clusters are already in the payload, so
+              switching never refetches. Hidden when there's nothing to switch. */}
+          {clusters.length > 1 && (
+            <ServersClusterFilter
+              clusters={clusters}
+              activeId={activeCluster.id}
+              onSelect={(id) => setSearchParams({ cluster: id })}
+            />
+          )}
           <ServersCountdown lastUpdated={lastUpdated} />
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
-          <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-6 pb-20">
-            {servers.map((server) => (
-              <ServersCards
-                key={server.key}
-                serverName={server.serverName}
-                ipAddress={server.ipAddress}
-                mapName={server.mapName}
-                status={server.status}
-                playerCount={server.playerCount}
-                maxPlayers={server.playerMax}
-<<<<<<< HEAD
-                lastWipe={server.lastWipe}
-=======
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
-              />
-            ))}
-          </div>
+          {activeCluster && activeCluster.servers.length > 0 ? (
+            <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-6 pb-20">
+              {activeCluster.servers.map((server) => (
+                <ServersCards
+                  key={server.key}
+                  serverName={server.serverName}
+                  ipAddress={server.ipAddress}
+                  mapName={server.mapName}
+                  status={server.status}
+                  playerCount={server.playerCount}
+                  maxPlayers={server.playerMax}
+                />
+              ))}
+            </div>
+          ) : (
+            // One cluster failed to poll / has no servers — degrade only this
+            // view; the filter above stays usable so the other cluster still
+            // displays.
+            <p className="w-full text-center text-sm text-gray-500 font-montserrat px-4 pb-20">
+              No live servers in this cluster right now.
+            </p>
+          )}
         </>
       )}
     </>

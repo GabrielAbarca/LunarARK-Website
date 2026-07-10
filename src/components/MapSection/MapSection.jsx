@@ -243,11 +243,7 @@ export default function MapSection() {
         {/* Info Panel - Right Column */}
         <div className="w-full flex flex-col items-center xl:items-start order-3 xl:h-[600px] justify-center">
           {isDesktop && (
-<<<<<<< HEAD
-            <div className="w-full max-w-md h-full bg-card-bg border border-white/10 rounded-2xl p-6 shadow-xl overflow-y-auto custom-scrollbar">
-=======
             <div className="w-full max-w-md h-full bg-card-bg border border-white/10 rounded-2xl p-6 shadow-xl overflow-y-auto">
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
               {caveData[currentMapKey]?.[selectedCaveIdx] && (
                 <div className="flex flex-col gap-6 text-gray-300">
                   <div className="border-b border-white/10 pb-4">

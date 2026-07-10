@@ -1,30 +1,40 @@
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
-=======
 
 const REFRESH_INTERVAL_MS = 30000;
 const REQUEST_TIMEOUT_MS = 30000;
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
+
+// Normalize one raw server record from the API into the shape the cards consume.
+// Every field is defensively defaulted so a server polled with partial data still
+// renders safely instead of throwing. `clusterId` scopes the React key so keys
+// stay unique even if two clusters ever report the same ip:port.
+function mapServer(s, clusterId) {
+  const ipAddress = `${s.ip ?? "unknown"}:${s.port ?? "unknown"}`;
+  return {
+    serverName: s.name?.split("[")[0]?.trim() ?? "Unknown Server",
+    ipAddress,
+    mapName: s.map?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "Unknown Map",
+    status: s.status
+      ? s.status.replace("dead", "Offline").replace(/^./, (c) => c.toUpperCase())
+      : "Unknown",
+    playerCount: s.players ?? 0,
+    playerMax: s.maxPlayers ?? 0,
+    key: `${clusterId}:${ipAddress}`,
+  };
+}
 
 export default function useServerData() {
-  const [servers, setServers] = useState([]);
+  // Ordered array of clusters: [{ id, label, servers: mapped[] }]. A cluster that
+  // failed to poll arrives as { id, label, servers: [] } — present but empty — so it
+  // never breaks a sibling cluster's display.
+  const [clusters, setClusters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-<<<<<<< HEAD
-=======
   const [lastUpdated, setLastUpdated] = useState(null);
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
 
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     let mounted = true;
-<<<<<<< HEAD
-
-    async function load() {
-      try {
-        const res = await fetch(`${apiUrl}/api/server-status`);
-=======
     let firstLoad = true;
     let controller;
 
@@ -43,52 +53,26 @@ export default function useServerData() {
         const res = await fetch(`${apiUrl}/api/server-status`, {
           signal: activeController.signal,
         });
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
         if (!res.ok) throw new Error("Failed to fetch server status");
 
         const json = await res.json();
 
-        const payload = Array.isArray(json.data) ? json.data : [];
+        // New clustered shape: { lastUpdated, clusters: { <id>: { label, servers } } }.
+        // The legacy flat `json.data` array is deprecated and no longer consumed.
+        const rawClusters =
+          json.clusters && typeof json.clusters === "object" ? json.clusters : {};
 
-<<<<<<< HEAD
-        const mapped = payload.map((s, index) => ({
-          serverName: s.name?.split("[")[0]?.trim() ?? "Unknown Server",
-          ipAddress: `${s.ip ?? "unknown"}:${s.port ?? "unknown"}`,
-          mapName: s.map?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "Unknown Map",
-          status: s.status
-            ? s.status.replace("dead", "Offline").replace(/^./, c => c.toUpperCase())
-            : "Unknown",
-          playerCount: s.players ?? 0,
-          playerMax: s.maxPlayers ?? 0,
-          key: index,
+        const mappedClusters = Object.entries(rawClusters).map(([id, cluster]) => ({
+          id,
+          label: cluster?.label ?? id.toUpperCase(),
+          servers: Array.isArray(cluster?.servers)
+            ? cluster.servers.map((s) => mapServer(s, id))
+            : [],
         }));
-=======
-        const mapped = payload.map((s) => {
-          const ipAddress = `${s.ip ?? "unknown"}:${s.port ?? "unknown"}`;
-          return {
-            serverName: s.name?.split("[")[0]?.trim() ?? "Unknown Server",
-            ipAddress,
-            mapName: s.map?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "Unknown Map",
-            status: s.status
-              ? s.status.replace("dead", "Offline").replace(/^./, c => c.toUpperCase())
-              : "Unknown",
-            playerCount: s.players ?? 0,
-            playerMax: s.maxPlayers ?? 0,
-            key: ipAddress,
-          };
-        });
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
 
         if (mounted) {
-          setServers(mapped);
+          setClusters(mappedClusters);
           setError(null);
-<<<<<<< HEAD
-        }
-      } catch (err) {
-        if (mounted) setError(err.message);
-      } finally {
-        if (mounted) setLoading(false);
-=======
           setLastUpdated(Date.now());
         }
       } catch (err) {
@@ -107,20 +91,10 @@ export default function useServerData() {
         clearTimeout(timeoutId);
         if (mounted) setLoading(false);
         firstLoad = false;
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
       }
     }
 
     load();
-<<<<<<< HEAD
-
-    return () => {
-      mounted = false;
-    };
-  }, [apiUrl]);
-
-  return { servers, loading, error };
-=======
     const intervalId = setInterval(load, REFRESH_INTERVAL_MS);
 
     return () => {
@@ -130,6 +104,5 @@ export default function useServerData() {
     };
   }, [apiUrl]);
 
-  return { servers, loading, error, lastUpdated };
->>>>>>> 4dd5b5dc9fdb275410df7727645dadcd8113c1ed
+  return { clusters, loading, error, lastUpdated };
 }
