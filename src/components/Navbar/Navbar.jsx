@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { cn } from "../../lib/utils";
 import logo from "../../assets/logo.png";
 
 export default function Navbar() {
   const [activeSubMenu, setActiveSubMenu] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,15 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Keep the mobile menu from lingering when resizing up to the desktop layout.
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const navItems = [
@@ -51,7 +62,7 @@ export default function Navbar() {
       label: "Info",
       href: "#info",
       dropdown: [
-        { label: "Discord", href: "https://discordapp.com/channels/1180286860476555265/1180288468488814743", external: true },
+        { label: "Discord", href: "https://discord.gg/FmKVFdnYs8", external: true },
         { label: "Events", href: "https://discordapp.com/channels/1180286860476555265/1370072768095326408", external: true },
         { label: "Staff", to: "/shop" },
         { label: "Features", to: "/#features-link" }
@@ -59,17 +70,18 @@ export default function Navbar() {
     }
   ];
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        scrolled ? "bg-dark-bg/80 backdrop-blur-md border-white/10 py-2" : "bg-transparent py-4"
+        scrolled || menuOpen ? "bg-dark-bg/80 backdrop-blur-md border-white/10 py-2" : "bg-transparent py-4"
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-center md:justify-between relative">
-        {/* Mobile Menu Button could go here */}
-        
-        <div className="flex items-center justify-center gap-4 md:gap-8 w-full">
+      <div className="max-w-7xl mx-auto px-4 relative">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center justify-center gap-8 w-full">
           {navItems.map((item) => {
             if (item.type === "logo") {
               return (
@@ -141,7 +153,91 @@ export default function Navbar() {
             );
           })}
         </div>
+
+        {/* Mobile bar */}
+        <div className="flex md:hidden items-center justify-between">
+          <Link
+            to="/"
+            onClick={closeMenu}
+            className="relative z-10 transform hover:scale-105 transition-transform duration-300"
+          >
+            <img src={logo} alt="LunarARK Logo" className="w-12 drop-shadow-[0_0_15px_rgba(0,255,213,0.5)]" />
+          </Link>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className="p-2 text-2xl text-gray-300 hover:text-neon-blue transition-colors duration-300"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile menu panel */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden overflow-hidden bg-dark-bg/95 backdrop-blur-md border-t border-white/10"
+          >
+            <div className="px-4 py-4 flex flex-col gap-4">
+              {navItems
+                .filter((item) => item.type !== "logo")
+                .map((item) => (
+                  <div key={item.id} className="flex flex-col gap-1">
+                    {item.href && !item.href.startsWith("#") ? (
+                      <a
+                        href={item.href}
+                        target={item.external ? "_blank" : undefined}
+                        rel={item.external ? "noopener noreferrer" : undefined}
+                        onClick={closeMenu}
+                        className="text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-neon-blue transition-colors"
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <span className="text-sm font-medium uppercase tracking-wide text-neon-blue/80">
+                        {item.label}
+                      </span>
+                    )}
+                    {item.dropdown && (
+                      <div className="flex flex-col pl-3 border-l border-white/10">
+                        {item.dropdown.map((subItem, index) => (
+                          subItem.to ? (
+                            <Link
+                              key={index}
+                              to={subItem.to}
+                              onClick={closeMenu}
+                              className="py-1.5 text-sm text-gray-400 hover:text-neon-blue transition-colors"
+                            >
+                              {subItem.label}
+                            </Link>
+                          ) : (
+                            <a
+                              key={index}
+                              href={subItem.href}
+                              target={subItem.external ? "_blank" : undefined}
+                              rel={subItem.external ? "noopener noreferrer" : undefined}
+                              onClick={closeMenu}
+                              className="py-1.5 text-sm text-gray-400 hover:text-neon-blue transition-colors"
+                            >
+                              {subItem.label}
+                            </a>
+                          )
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
