@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="flex flex-col gap-2">
             <a href="mailto:info@lunar-ark-servers.net" className="text-neon-blue hover:text-white transition-all duration-300">Contact</a>
             <a
-              href="https://discord.com/channels/1180286860476555265/1180288468488814743"
+              href="https://discord.gg/FmKVFdnYs8"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neon-blue hover:text-white transition-all duration-300"
@@ -35,7 +35,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="flex gap-6">
           <a
-            href="https://discord.com/channels/1180286860476555265/1180288468488814743"
+            href="https://discord.gg/FmKVFdnYs8"
             target="_blank"
             rel="noopener noreferrer"
             title="Join Discord"

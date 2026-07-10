@@ -109,7 +109,7 @@ export default function ServersCards({
                 <span className="font-mono text-sm text-gray-300 truncate text-center w-full">
                   {copied ? <span className="text-green-400 font-bold">IP Copied!</span> : (hovering ? "Click to Copy IP" : ipAddress)}
                 </span>
-                {!copied && <CopyIcon className="w-4 h-4 text-neon-blue flex-shrink-0" />}
+                {!copied && <CopyIcon />}
               </div>
 
               <a
@@ -118,7 +118,7 @@ export default function ServersCards({
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green rounded-lg px-6 py-3 hover:bg-neon-green/20 hover:shadow-[0_0_15px_rgba(0,254,140,0.3)] transition-all duration-300 font-bold uppercase tracking-wider text-sm text-center"
               >
-                <PlayIcon className="w-4 h-4" />
+                <PlayIcon />
                 Connect
               </a>
             </div>
