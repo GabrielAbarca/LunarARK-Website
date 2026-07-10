@@ -3,8 +3,30 @@ import { useEffect, useState } from "react";
 const REFRESH_INTERVAL_MS = 30000;
 const REQUEST_TIMEOUT_MS = 30000;
 
+// Normalize one raw server record from the API into the shape the cards consume.
+// Every field is defensively defaulted so a server polled with partial data still
+// renders safely instead of throwing. `clusterId` scopes the React key so keys
+// stay unique even if two clusters ever report the same ip:port.
+function mapServer(s, clusterId) {
+  const ipAddress = `${s.ip ?? "unknown"}:${s.port ?? "unknown"}`;
+  return {
+    serverName: s.name?.split("[")[0]?.trim() ?? "Unknown Server",
+    ipAddress,
+    mapName: s.map?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "Unknown Map",
+    status: s.status
+      ? s.status.replace("dead", "Offline").replace(/^./, (c) => c.toUpperCase())
+      : "Unknown",
+    playerCount: s.players ?? 0,
+    playerMax: s.maxPlayers ?? 0,
+    key: `${clusterId}:${ipAddress}`,
+  };
+}
+
 export default function useServerData() {
-  const [servers, setServers] = useState([]);
+  // Ordered array of clusters: [{ id, label, servers: mapped[] }]. A cluster that
+  // failed to poll arrives as { id, label, servers: [] } — present but empty — so it
+  // never breaks a sibling cluster's display.
+  const [clusters, setClusters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
@@ -35,25 +57,21 @@ export default function useServerData() {
 
         const json = await res.json();
 
-        const payload = Array.isArray(json.data) ? json.data : [];
+        // New clustered shape: { lastUpdated, clusters: { <id>: { label, servers } } }.
+        // The legacy flat `json.data` array is deprecated and no longer consumed.
+        const rawClusters =
+          json.clusters && typeof json.clusters === "object" ? json.clusters : {};
 
-        const mapped = payload.map((s) => {
-          const ipAddress = `${s.ip ?? "unknown"}:${s.port ?? "unknown"}`;
-          return {
-            serverName: s.name?.split("[")[0]?.trim() ?? "Unknown Server",
-            ipAddress,
-            mapName: s.map?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "Unknown Map",
-            status: s.status
-              ? s.status.replace("dead", "Offline").replace(/^./, c => c.toUpperCase())
-              : "Unknown",
-            playerCount: s.players ?? 0,
-            playerMax: s.maxPlayers ?? 0,
-            key: ipAddress,
-          };
-        });
+        const mappedClusters = Object.entries(rawClusters).map(([id, cluster]) => ({
+          id,
+          label: cluster?.label ?? id.toUpperCase(),
+          servers: Array.isArray(cluster?.servers)
+            ? cluster.servers.map((s) => mapServer(s, id))
+            : [],
+        }));
 
         if (mounted) {
-          setServers(mapped);
+          setClusters(mappedClusters);
           setError(null);
           setLastUpdated(Date.now());
         }
@@ -86,5 +104,5 @@ export default function useServerData() {
     };
   }, [apiUrl]);
 
-  return { servers, loading, error, lastUpdated };
+  return { clusters, loading, error, lastUpdated };
 }
