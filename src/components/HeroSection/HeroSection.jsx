@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import ShinyText from "../../TextAnimations/ShinyText/ShinyText.jsx";
 import CartIcon from "../Icons/CartIcon.jsx";
 import GlobeIcon from "../Icons/GlobeIcon.jsx";
+import DiscordIcon from "../Icons/DiscordIcon.jsx";
 import WipeCountdown from "../WipeCountdown/WipeCountdown.jsx";
 
 export default function HeroSection() {
@@ -50,16 +51,27 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="flex flex-col md:flex-row gap-4 w-full max-w-2xl justify-center"
+          className="flex flex-col md:flex-row gap-4 w-full max-w-3xl justify-center"
         >
-          <Link 
-            to="/servers" 
+          <a
+            href="https://discord.gg/FmKVFdnYs8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-neon-blue/50 rounded-lg text-neon-blue hover:bg-neon-blue/10 hover:border-neon-blue hover:shadow-[0_0_20px_rgba(0,255,213,0.3)] transition-all duration-300"
+          >
+            <DiscordIcon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+            <p className="font-bold tracking-wider uppercase">Join Discord</p>
+          </a>
+
+          <Link
+            to="/servers"
             className="group flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-neon-blue/50 rounded-lg text-neon-blue hover:bg-neon-blue/10 hover:border-neon-blue hover:shadow-[0_0_20px_rgba(0,255,213,0.3)] transition-all duration-300"
           >
             <GlobeIcon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-            <p className="font-bold tracking-wider uppercase">Browse Servers</p>
+            <p className="font-bold tracking-wider uppercase">Explore Servers</p>
           </Link>
-          
+
+
           <a
             href="https://lunarark-50x-ase.tebex.io/category/ranks"
             target="_blank"
