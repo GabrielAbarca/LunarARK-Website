@@ -4,7 +4,7 @@ import { cn } from "../../lib/utils";
 // Page-scale segmented control for filtering the /servers grid by cluster.
 // Controlled and presentational: the active id and setter are owned by the
 // Servers page (which syncs the selection to the ?cluster= URL param).
-// Labels come from each cluster's payload `label` (e.g. "2MAN" / "4MAN").
+// The cluster list and labels come from clustersData.js.
 export default function ServersClusterFilter({ clusters, activeId, onSelect }) {
   return (
     <motion.div

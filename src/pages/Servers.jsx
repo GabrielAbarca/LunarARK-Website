@@ -2,12 +2,12 @@ import { useSearchParams } from "react-router-dom";
 import ServersMain from "../components/ServersMain/ServersMain.jsx";
 import ServersCards from "../components/ServersCards/ServersCards.jsx";
 import ServersClusterFilter from "../components/ServersClusterFilter/ServersClusterFilter.jsx";
+import { CLUSTERS } from "../components/ServersClusterFilter/clustersData.js";
 import useServerData from "../hooks/useServerData.js";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner.jsx";
 import ServersCountdown from "../components/ServersCountdown/ServersCountdown.jsx";
 
 export default function Servers() {
-  const { clusters, loading, error, lastUpdated } = useServerData();
   const [searchParams, setSearchParams] = useSearchParams();
 
   // The selected cluster lives in the URL (?cluster=<id>) so views are
@@ -16,13 +16,25 @@ export default function Servers() {
   // rewriting the URL — it stays clean until the visitor interacts.
   const clusterParam = searchParams.get("cluster");
   const activeCluster =
-    clusters.find((cluster) => cluster.id === clusterParam) ??
-    clusters.find((cluster) => cluster.id === "2man") ??
-    clusters[0];
+    CLUSTERS.find((cluster) => cluster.id === clusterParam) ??
+    CLUSTERS.find((cluster) => cluster.id === "2man") ??
+    CLUSTERS[0];
+
+  // Fetch only the selected cluster — switching clusters refetches its 12
+  // servers rather than loading every cluster up front.
+  const { servers, loading, error, lastUpdated, hasLoadedOnce } =
+    useServerData(activeCluster.id);
 
   return (
     <>
       <ServersMain />
+      {CLUSTERS.length > 1 && (
+        <ServersClusterFilter
+          clusters={CLUSTERS}
+          activeId={activeCluster.id}
+          onSelect={(id) => setSearchParams({ cluster: id })}
+        />
+      )}
       {error ? (
         <div className="w-full flex flex-col items-center gap-3 px-4 pt-12 pb-20 text-center">
           <h2 className="text-2xl md:text-3xl font-gugi text-red-400 drop-shadow-[0_0_10px_rgba(248,113,113,0.4)]">
@@ -34,22 +46,13 @@ export default function Servers() {
           </p>
         </div>
       ) : loading ? (
-        <LoadingSpinner />
+        <LoadingSpinner showHint={!hasLoadedOnce} />
       ) : (
         <>
-          {/* Client-side filter — both clusters are already in the payload, so
-              switching never refetches. Hidden when there's nothing to switch. */}
-          {clusters.length > 1 && (
-            <ServersClusterFilter
-              clusters={clusters}
-              activeId={activeCluster.id}
-              onSelect={(id) => setSearchParams({ cluster: id })}
-            />
-          )}
           <ServersCountdown lastUpdated={lastUpdated} />
-          {activeCluster && activeCluster.servers.length > 0 ? (
+          {servers.length > 0 ? (
             <div className="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-6 pb-20">
-              {activeCluster.servers.map((server) => (
+              {servers.map((server) => (
                 <ServersCards
                   key={server.key}
                   serverName={server.serverName}
@@ -62,9 +65,6 @@ export default function Servers() {
               ))}
             </div>
           ) : (
-            // One cluster failed to poll / has no servers — degrade only this
-            // view; the filter above stays usable so the other cluster still
-            // displays.
             <p className="w-full text-center text-sm text-gray-500 font-montserrat px-4 pb-20">
               No live servers in this cluster right now.
             </p>
