@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import ShinyText from "../../TextAnimations/ShinyText/ShinyText.jsx";
 import CartIcon from "../Icons/CartIcon.jsx";
 import GlobeIcon from "../Icons/GlobeIcon.jsx";
+import WipeCountdown from "../WipeCountdown/WipeCountdown.jsx";
 
 export default function HeroSection() {
   return (
@@ -43,10 +44,12 @@ export default function HeroSection() {
           />
         </motion.div>
 
-        <motion.section 
+        <WipeCountdown />
+
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
           className="flex flex-col md:flex-row gap-4 w-full max-w-2xl justify-center"
         >
           <Link 
