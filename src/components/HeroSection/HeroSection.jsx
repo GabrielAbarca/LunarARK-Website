@@ -1,30 +1,12 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ShinyText from "../../TextAnimations/ShinyText/ShinyText.jsx";
 import CartIcon from "../Icons/CartIcon.jsx";
 import GlobeIcon from "../Icons/GlobeIcon.jsx";
-import HeroServerCard from "./HeroServerCard.jsx";
-import HeroServerCardSkeleton from "./HeroServerCardSkeleton.jsx";
-import HeroClusterToggle from "./HeroClusterToggle.jsx";
-import useServerData from "../../hooks/useServerData.js";
-
-// Number of placeholder cards shown while live status loads.
-const SKELETON_COUNT = 3;
+import DiscordIcon from "../Icons/DiscordIcon.jsx";
+import WipeCountdown from "../WipeCountdown/WipeCountdown.jsx";
 
 export default function HeroSection() {
-  // Non-blocking: the hero paints immediately and the card row below swaps
-  // from skeletons to real cards (or a degrade line) as the fetch resolves.
-  const { clusters, loading, error } = useServerData();
-  const [activeClusterId, setActiveClusterId] = useState("2man");
-
-  // Fall back to the first available cluster if the default id isn't present
-  // (e.g. a partial payload). Undefined only while clusters is still empty, in
-  // which case the loading/degrade branches render and never read it.
-  const activeCluster =
-    clusters.find((cluster) => cluster.id === activeClusterId) ?? clusters[0];
-  const hasClusters = clusters.length > 0;
-
   return (
     <main className="w-full min-h-screen flex flex-col items-center justify-start pt-32 md:pt-40 pb-20 relative overflow-hidden">
       {/* Background Elements */}
@@ -63,20 +45,33 @@ export default function HeroSection() {
           />
         </motion.div>
 
-        <motion.section 
+        <WipeCountdown />
+
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="flex flex-col md:flex-row gap-4 w-full max-w-2xl justify-center"
+          transition={{ delay: 0.9, duration: 0.8 }}
+          className="flex flex-col md:flex-row gap-4 w-full max-w-3xl justify-center"
         >
-          <Link 
-            to="/servers" 
+          <a
+            href="https://discord.gg/FmKVFdnYs8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-neon-blue/50 rounded-lg text-neon-blue hover:bg-neon-blue/10 hover:border-neon-blue hover:shadow-[0_0_20px_rgba(0,255,213,0.3)] transition-all duration-300"
+          >
+            <DiscordIcon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+            <p className="font-bold tracking-wider uppercase">Join Discord</p>
+          </a>
+
+          <Link
+            to="/servers"
             className="group flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-neon-blue/50 rounded-lg text-neon-blue hover:bg-neon-blue/10 hover:border-neon-blue hover:shadow-[0_0_20px_rgba(0,255,213,0.3)] transition-all duration-300"
           >
             <GlobeIcon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-            <p className="font-bold tracking-wider uppercase">Browse Servers</p>
+            <p className="font-bold tracking-wider uppercase">Explore Servers</p>
           </Link>
-          
+
+
           <a
             href="https://lunarark-50x-ase.tebex.io/category/ranks"
             target="_blank"
@@ -87,75 +82,6 @@ export default function HeroSection() {
             <p className="font-bold tracking-wider uppercase">View Bundles</p>
           </a>
         </motion.section>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          className="mt-16 w-full"
-        >
-          {loading ? (
-            <div className="w-full overflow-x-auto pb-2">
-              <div className="flex gap-4 w-max mx-auto px-4">
-                {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
-                  <HeroServerCardSkeleton key={i} />
-                ))}
-              </div>
-            </div>
-          ) : !error && hasClusters ? (
-            <>
-              {/* Client-side cluster switch — both clusters are already in the
-                  payload, so selecting one never triggers a refetch. Hidden when
-                  there's nothing to switch between. */}
-              {clusters.length > 1 && (
-                <HeroClusterToggle
-                  clusters={clusters}
-                  activeId={activeCluster.id}
-                  onSelect={setActiveClusterId}
-                />
-              )}
-              {activeCluster.servers.length > 0 ? (
-                <div className="w-full overflow-x-auto pb-2">
-                  <div className="flex gap-4 w-max mx-auto px-4">
-                    {activeCluster.servers.map((server) => (
-                      <HeroServerCard
-                        key={server.key}
-                        serverName={server.serverName}
-                        mapName={server.mapName}
-                        status={server.status}
-                        playerCount={server.playerCount}
-                        maxPlayers={server.playerMax}
-                        ipAddress={server.ipAddress}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                // One cluster failed to poll / has no servers — degrade only this
-                // cluster so the other stays switchable and displayable.
-                <p className="text-center text-sm text-gray-500 font-montserrat px-4">
-                  No live servers in this cluster right now —{" "}
-                  <Link
-                    to="/servers"
-                    className="text-neon-blue/80 hover:text-neon-blue underline underline-offset-2 transition-colors duration-300"
-                  >
-                    see the servers page
-                  </Link>
-                </p>
-              )}
-            </>
-          ) : (
-            <p className="text-center text-sm text-gray-500 font-montserrat px-4">
-              Live status unavailable —{" "}
-              <Link
-                to="/servers"
-                className="text-neon-blue/80 hover:text-neon-blue underline underline-offset-2 transition-colors duration-300"
-              >
-                see the servers page
-              </Link>
-            </p>
-          )}
-        </motion.div>
       </div>
     </main>
   );
