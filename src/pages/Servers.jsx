@@ -36,7 +36,7 @@ export default function Servers() {
         />
       )}
       {error ? (
-        <div className="w-full flex flex-col items-center gap-3 px-4 pt-12 pb-20 text-center">
+        <div className="w-full flex flex-col items-center gap-3 px-4 pt-12 pb-20 text-center mb-84">
           <h2 className="text-2xl md:text-3xl font-gugi text-red-400 drop-shadow-[0_0_10px_rgba(248,113,113,0.4)]">
             Servers Unavailable
           </h2>
