@@ -13,7 +13,7 @@ export default function Footer() {
 
         <div className="flex gap-12 md:gap-24 text-center">
           <div className="flex flex-col gap-2">
-            <Link to="/shop" className="text-neon-blue hover:text-white transition-all duration-300">Shop</Link>
+            <a href="https://lunarark-50x-ase.tebex.io/category/ranks" target="_blank" rel="noopener noreferrer" className="text-neon-blue hover:text-white transition-all duration-300">Shop</a>
             <Link to="/servers" className="text-neon-blue hover:text-white transition-all duration-300">Servers</Link>
           </div>
           <div className="flex flex-col gap-2">
