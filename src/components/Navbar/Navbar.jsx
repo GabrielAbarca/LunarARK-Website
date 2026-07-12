@@ -31,18 +31,15 @@ export default function Navbar() {
     {
       id: "servers",
       label: "Servers",
-      href: "#servers",
       dropdown: [
-        { label: "Lunar 20X Cluster", to: "/servers" }
+        { label: "Lunar 20X Clusters", to: "/servers" }
       ]
     },
     {
       id: "shop",
       label: "Shop",
-      href: "https://lunarark-50x-ase.tebex.io/category/ranks",
-      external: true,
       dropdown: [
-        { label: "Bundles VIP", to: "/shop" }
+        { label: "Tebex Shop", href: "https://lunarark-50x-ase.tebex.io/category/ranks", external: true }
       ]
     },
     {
@@ -52,7 +49,6 @@ export default function Navbar() {
     {
       id: "support",
       label: "Support",
-      href: "#support",
       dropdown: [
         { label: "Submit a ticket", href: "https://discordapp.com/channels/1180286860476555265/1185349483190558871", external: true }
       ]
@@ -60,11 +56,9 @@ export default function Navbar() {
     {
       id: "info",
       label: "Info",
-      href: "#info",
       dropdown: [
         { label: "Discord", href: "https://discord.gg/FmKVFdnYs8", external: true },
         { label: "Events", href: "https://discordapp.com/channels/1180286860476555265/1370072768095326408", external: true },
-        { label: "Staff", to: "/shop" },
         { label: "Features", to: "/#features-link" }
       ]
     }
@@ -98,10 +92,7 @@ export default function Navbar() {
                 onMouseEnter={() => setActiveSubMenu(item.id)}
                 onMouseLeave={() => setActiveSubMenu("")}
               >
-                <a
-                  href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener noreferrer" : undefined}
+                <span
                   className={cn(
                     "relative px-4 py-2 text-sm md:text-base font-medium uppercase tracking-wide transition-colors duration-300",
                     activeSubMenu === item.id ? "text-neon-blue" : "text-gray-300 hover:text-white"
@@ -112,7 +103,7 @@ export default function Navbar() {
                     "absolute bottom-0 left-0 w-full h-0.5 bg-neon-blue transform scale-x-0 transition-transform duration-300 origin-left",
                     activeSubMenu === item.id && "scale-x-100"
                   )} />
-                </a>
+                </span>
 
                 <AnimatePresence>
                   {activeSubMenu === item.id && item.dropdown && (
@@ -190,21 +181,9 @@ export default function Navbar() {
                 .filter((item) => item.type !== "logo")
                 .map((item) => (
                   <div key={item.id} className="flex flex-col gap-1">
-                    {item.href && !item.href.startsWith("#") ? (
-                      <a
-                        href={item.href}
-                        target={item.external ? "_blank" : undefined}
-                        rel={item.external ? "noopener noreferrer" : undefined}
-                        onClick={closeMenu}
-                        className="text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-neon-blue transition-colors"
-                      >
-                        {item.label}
-                      </a>
-                    ) : (
-                      <span className="text-sm font-medium uppercase tracking-wide text-neon-blue/80">
-                        {item.label}
-                      </span>
-                    )}
+                    <span className="text-sm font-medium uppercase tracking-wide text-neon-blue/80">
+                      {item.label}
+                    </span>
                     {item.dropdown && (
                       <div className="flex flex-col pl-3 border-l border-white/10">
                         {item.dropdown.map((subItem, index) => (
