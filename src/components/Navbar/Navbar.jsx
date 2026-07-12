@@ -39,7 +39,7 @@ export default function Navbar() {
       id: "shop",
       label: "Shop",
       dropdown: [
-        { label: "Bundles VIP", to: "/shop" }
+        { label: "Tebex Shop", href: "https://lunarark-50x-ase.tebex.io/category/ranks", external: true }
       ]
     },
     {
