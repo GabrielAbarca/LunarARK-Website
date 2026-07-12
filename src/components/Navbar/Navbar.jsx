@@ -32,7 +32,7 @@ export default function Navbar() {
       id: "servers",
       label: "Servers",
       dropdown: [
-        { label: "Lunar 20X Cluster", to: "/servers" }
+        { label: "Lunar 20X Clusters", to: "/servers" }
       ]
     },
     {
